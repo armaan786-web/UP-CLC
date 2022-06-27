@@ -1,0 +1,55 @@
+{% extends 'HOD/includes/base.html' %}
+{% block content %}
+<div class="hk-wrapper hk-vertical-nav">
+<div class="hk-pg-wrapper ">
+    <nav class="hk-breadcrumb" aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light bg-transparent p-4">
+            <li class="breadcrumb-item"><a  href="#">Role</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Role</li>
+        </ol>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12">
+               
+              
+                
+                <section class="hk-sec-wrapper">
+                    <h5 class="hk-sec-title">ADD ROLE</h5>
+                    <hr>
+                    {% include 'HOD/includes/messages.html' %}
+                    <div class="row">
+                        <div class="col-sm">
+                            <form class="needs-validation" novalidate method="POST" action="">
+                                {% csrf_token %}
+                                <div class="form-row">
+                               
+                                    
+                                    <div class="col-md-4 mb-15">
+                                        <label for="validationTooltipUsername">Role Name</label>
+                                        <div class="input-group">
+                                            {% comment %} <div class="input-group-prepend">
+                                                <span class="input-group-text" id="validationTooltipUsernamePrepend">@</span>
+                                            </div> {% endcomment %}
+                                            <input type="text" class="form-control" id="validationTooltipUsername" placeholder="Role" aria-describedby="validationTooltipUsernamePrepend" name="role" required>
+                                            <div class="invalid-tooltip">
+                                                Please provie a unique and valid Role Name.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn-primary" type="submit">Add Role</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+{% endblock content %}
