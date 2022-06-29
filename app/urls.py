@@ -6,12 +6,17 @@ from .import views,HOD_VIEWS,MEMBERS_VIEWS,EMPLOYEE_VIEWS
 urlpatterns = [
     path('',views.home,name="home"),
     path('joblisting/',views.joblisting,name="joblisting"),
+    path('jobdetails/<int:pk>',views.jobdetails,name="jobdetails"),
+    path('course/',views.course,name="course"),
     path('about/',views.about,name="about"),
     path('contact/',views.contact,name="contact"),
+    path('apply/',views.apply,name="apply"),
     path('register/',views.regi,name="register"),
     
 
+
     path('success/', views.Success , name='success'),
+    path('userlogin/', views.userLogin, name="userlogin"),
     path('dologin/', views.doLogin, name="dologin"),
     
     
@@ -56,6 +61,7 @@ urlpatterns = [
 
     ########################## EMPLOYER URL ############################
     path('EMPLOYERS/Dashboard', EMPLOYEE_VIEWS.dashboard,name="dashboard"),
+    path('EMPLOYERS/ADDJOBS', EMPLOYEE_VIEWS.employer_addjobs,name="employer_addjobs"),
     path('EMPLOYERS/REGISTER', EMPLOYEE_VIEWS.employer_register,name="employer_register"),
     path('EMPLOYERS/doregister', EMPLOYEE_VIEWS.employer_doregister,name="employer_doregister"),
     path('EMPLOYERS/login', EMPLOYEE_VIEWS.employer_login,name="employer_login"),

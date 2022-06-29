@@ -11,6 +11,27 @@ from django.contrib.auth import authenticate, login, logout
 def dashboard(request):
     return render(request,'employer/dashboard.html')
 
+def employer_addjobs(request):
+    if request.method == "POST":
+        job_pic=request.FILES.get('job_pic')
+        jobs_name = request.POST.get('jobs_name')
+        job_location = request.POST.get('job_location')
+        min_sallery = request.POST.get('min_sallery')
+        max_sallery = request.POST.get('max_sallery')
+        sallery = request.POST.get('sallery')
+        Vacancy = request.POST.get('Vacancy')
+        # app_date = request.POST.get('app_date')
+        desc = request.POST.get('desc')
+        Skills = request.POST.get('Skills')
+        Experience = request.POST.get('Experience')
+        job = Job.objects.create(job_img=job_pic,job_name=jobs_name,job_location=job_location,min_sallery=min_sallery,max_sallery=max_sallery,Vacancy=Vacancy,job_des=desc,job_skill=Skills,job_experience=Experience,salary=sallery)
+        job.save()
+        messages.success(request,"Successfully Created Jobs")
+    else:
+        messages.error(request,"Failed to Create Jobs")
+
+    return render(request,'employer/add_jobs.html')
+
 def employer_register(request):
     
     return render(request,'employer/register.html')

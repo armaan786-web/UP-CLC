@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 
@@ -31,7 +32,28 @@ class Employee(models.Model):
     def __str__(self):
         return self.admin.username
 
-  
+class Job(models.Model):
+    # employee = models.ForeignKey(to=Employee,on_delete=models.CASCADE) 
+    job_img = models.ImageField(upload_to='Jobs_Img')
+    job_name = models.CharField(max_length=100)
+    company_name = models.CharField(max_length=100)
+    job_location = models.CharField(max_length=100)
+    min_sallery = models.IntegerField()
+    max_sallery = models.IntegerField()
+    Vacancy = models.IntegerField()
+    date =models.DateField(auto_now_add=True)
+    # date =models.DateField(auto_now_add=False)
+    job_des = RichTextField()
+    job_skill = RichTextField()
+    job_experience = RichTextField()
+    salary = models.IntegerField()
+
+    def __str__(self):
+        return self.job_name
+    
+
+
+
 
 class Role(models.Model):
     role_name = models.CharField(max_length=100)
@@ -52,7 +74,7 @@ class Member(models.Model):
     gender = models.CharField(max_length=50)
     mobile_no = models.CharField(max_length=50)
     dob = models.DateField(auto_now_add=False,null=True,blank=True)
-    adhaar = models.IntegerField(null=True,blank=True)
+    adhaar = models.CharField(max_length=50,null=True,blank=True)
     pan_no = models.CharField(max_length=50,null=True,blank=True)
     caste = models.CharField(max_length=50,null=True,blank=True)
     city = models.CharField(max_length=50,null=True,blank=True)

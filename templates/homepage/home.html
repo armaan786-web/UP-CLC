@@ -24,7 +24,29 @@
         font-weight: bolder;
       }
     }
- 
+    
+    
+.full{
+  padding-left:0 !important;
+  padding-right:0 !important;
+}
+.news{
+    width: 100%;
+    background: #cc4444;
+}
+
+.news marquee{
+    font-size: 18px;
+    margin-top: 12px
+}
+.news-content p{
+    display: inline;
+    color:white;
+    font-size: 20px;
+
+
+}
+
     
   </style>
  
@@ -41,15 +63,16 @@
               <br>
               <div class="row" style="margin-top: 1%;">
                 <div class="col-lg-3">
-                  <button class="b"
+                  
+                  <a href="{% url 'course' %}"><button class="b"
                     style=" margin-top: 1.2%; background: #fff;color: orangered !important;display: inline-block;padding: 15px 24px;font-family: Muli, sans-serif;font-size: 20px;font-weight: bold;border: 0;border: 1px solid white;letter-spacing: 3px;text-align: center;color: #fb246a;text-transform: uppercase;cursor: pointer;">TRAINING</button>
-                </div>
+                </div></a>
                 <div class="col-lg-5">
                   <p style="color: none;"></p>
                 </div>
                 <div class="col-lg-3">
-                  <button class="b"
-                    style=" background: #fff;color: orangered !important;display: inline-block;padding: 15px 46px;font-family: Muli, sans-serif;font-size: 20px;font-weight: bold;border: 0;border: 1px solid white;letter-spacing: 3px;text-align: center;color: #fb246a;text-transform: uppercase;cursor: pointer;">JOBES</button><br><br>
+                  <a href="{% url 'joblisting' %}"><button class="b"
+                    style=" background: #fff;color: orangered !important;display: inline-block;padding: 15px 46px;font-family: Muli, sans-serif;font-size: 20px;font-weight: bold;border: 0;border: 1px solid white;letter-spacing: 3px;text-align: center;color: #fb246a;text-transform: uppercase;cursor: pointer;">JOBES</button><br><br></a>
                 </div>
  
               </div>
@@ -61,7 +84,15 @@
     </div>
     <!-- slider Area End-->
     <!-- Our Services Start -->
-    <div class="our-services section-pad-t30">
+    <div class="container-fluid mb-4 full">
+      <div class="news"> 
+        <marquee class="news-content"> 
+            <p>WELCOME TO CLC UP YOUR JOB/TRAINING PORTAL
+               </p> 
+        </marquee> 
+     </div> 
+    </div>
+    <div class="our-services mt-2">
       <div class="container">
         <!-- Section Tittle -->
         <div class="row">
@@ -151,101 +182,38 @@
         <div class="row justify-content-center">
           <div class="col-xl-10">
             <!-- single-job-content -->
-            <div class="single-job-items mb-30">
-              <div class="job-items">
-                <div class="company-img">
-                  <a href="job_details.html"><img src="assets/img/icon/job-list1.png" alt="" /></a>
-                </div>
-                <div class="job-tittle">
-                  <a href="job_details.html">
-                    <h4>Digital Marketer</h4>
-                  </a>
-                  <ul>
-                    <li>Creative Agency</li>
-                    <li>
-                      <i class="fas fa-map-marker-alt"></i>Athens, Greece
-                    </li>
-                    <li>$3500 - $4000</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="items-link f-right">
-                <a href="job_details.html">Full Time</a>
-                <span>7 hours ago</span>
-              </div>
-            </div>
+           
             <!-- single-job-content -->
-            <div class="single-job-items mb-30">
-              <div class="job-items">
-                <div class="company-img">
-                  <a href="job_details.html"><img src="assets/img/icon/job-list2.png" alt="" /></a>
-                </div>
-                <div class="job-tittle">
-                  <a href="job_details.html">
-                    <h4>Digital Marketer</h4>
-                  </a>
-                  <ul>
-                    <li>Creative Agency</li>
-                    <li>
-                      <i class="fas fa-map-marker-alt"></i>Athens, Greece
-                    </li>
-                    <li>$3500 - $4000</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="items-link f-right">
-                <a href="job_details.html">Full Time</a>
-                <span>7 hours ago</span>
-              </div>
-            </div>
+           
             <!-- single-job-content -->
-            <div class="single-job-items mb-30">
-              <div class="job-items">
-                <div class="company-img">
-                  <a href="job_details.html"><img src="assets/img/icon/job-list3.png" alt="" /></a>
-                </div>
-                <div class="job-tittle">
-                  <a href="job_details.html">
-                    <h4>Digital Marketer</h4>
-                  </a>
-                  <ul>
-                    <li>Creative Agency</li>
-                    <li>
-                      <i class="fas fa-map-marker-alt"></i>Athens, Greece
-                    </li>
-                    <li>$3500 - $4000</li>
-                  </ul>
-                </div>
-              </div>
-              <div class="items-link f-right">
-                <a href="job_details.html">Full Time</a>
-                <span>7 hours ago</span>
-              </div>
-            </div>
+           
             <!-- single-job-content -->
+            {% for i in job %}
             <div class="single-job-items mb-30">
               <div class="job-items">
                 <div class="company-img">
-                  <a href="job_details.html"><img src="assets/img/icon/job-list4.png" alt="" /></a>
+                  {% comment %} <img src="/media/{{i.profile_pic}}" class="img-fluid rounded-3" alt="instructor-image">   {% endcomment %}
+                  <a class="img-fluid rounded-3" href="job_details.html"><img src="/media/{{i.job_img}}" alt="" /></a>
                 </div>
                 <div class="job-tittle">
                   <a href="job_details.html">
-                    <h4>Digital Marketer</h4>
+                    <h4>{{i.job_name}}</h4>
                   </a>
                   <ul>
-                    <li>Creative Agency</li>
+                    <li>{{i.company_name}}</li>
                     <li>
-                      <i class="fas fa-map-marker-alt"></i>Athens, Greece
+                      <i class="fas fa-map-marker-alt"></i>{{i.job_location}}
                     </li>
-                    <li>$3500 - $4000</li>
+                    <li>Rs.{{i.min_sallery}} - Rs.{{i.max_sallery}}</li>
                   </ul>
                 </div>
               </div>
               <div class="items-link f-right">
-                <a href="job_details.html">Full Time</a>
+                <a href="jobdetails">Full Time</a>
                 <span>7 hours ago</span>
               </div>
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>
