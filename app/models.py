@@ -53,7 +53,17 @@ class Job(models.Model):
     
 
 
+class Course(models.Model):
+    course_img = models.ImageField(upload_to = 'course_pic')
+    course_name = models.CharField(max_length=100)
+    course_amt = models.IntegerField()
+    company_name = models.CharField(max_length=100)
+    course_location = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.course_name
+    
+    
 
 class Role(models.Model):
     role_name = models.CharField(max_length=100)
@@ -67,14 +77,34 @@ class Role(models.Model):
     class Meta:
         db_table = "role"
         
+    
 
+class Center(models.Model):
+    center_name = models.CharField(max_length=100)
+    created_at=models.DateTimeField(auto_now_add=True)
+    updated_at=models.DateTimeField(auto_now_add=False, auto_now=True,null=True,blank=True)
+    objects=models.Manager()
+
+    def __str__(self):
+        return self.center_name
+
+    class Meta:
+        db_table = "center"
+        
+class Location(models.Model):
+    center_name = models.ForeignKey(Center,on_delete=models.CASCADE)
+    location = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.center_name)
+    
 class Member(models.Model):
     admin=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
     father_name = models.CharField(max_length=50)
     gender = models.CharField(max_length=50)
     mobile_no = models.CharField(max_length=50)
     dob = models.DateField(auto_now_add=False,null=True,blank=True)
-    adhaar = models.CharField(max_length=50,null=True,blank=True)
+    # adhaar = models.CharField(max_length=50,null=True,blank=True)
     pan_no = models.CharField(max_length=50,null=True,blank=True)
     caste = models.CharField(max_length=50,null=True,blank=True)
     city = models.CharField(max_length=50,null=True,blank=True)

@@ -30,11 +30,59 @@
                 <hr class="nav-separator">
                 
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_training">
+                        <span class="feather-icon"><i data-feather="zap"></i></span>
+                        <span class="nav-link-text">Training </span>
+                    </a>
+                    <ul id="auth_training" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'training_center' %}">
+                                           Add Center
+                                        </a>
+                                   
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'manage_center' %}">Manage Center</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_location">
+                        <span class="feather-icon"><i data-feather="zap"></i></span>
+                        <span class="nav-link-text">Location </span>
+                    </a>
+                    <ul id="auth_location" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'location' %}">
+                                           Add Location
+                                        </a>
+                                   
+                                </li>
+                              
+                                <li class="nav-item">
+                                    <a class="nav-link" href="">Manage Location</a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_role">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
                         <span class="nav-link-text">Role</span>
                     </a>
-                    <ul id="auth_drp" class="nav flex-column collapse collapse-level-1">
+                    <ul id="auth_role" class="nav flex-column collapse collapse-level-1">
                         <li class="nav-item">
                             <ul class="nav flex-column">
                                 <li class="nav-item">

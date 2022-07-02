@@ -1,5 +1,5 @@
 from django.urls import path
-from .import views,HOD_VIEWS,MEMBERS_VIEWS,EMPLOYEE_VIEWS
+from .import views,HOD_VIEWS,MEMBERS_VIEWS,EMPLOYEE_VIEWS,INSTRUCTOR_VIEWS,TRAINING_VIEWS
 
 
 
@@ -11,16 +11,16 @@ urlpatterns = [
     path('about/',views.about,name="about"),
     path('contact/',views.contact,name="contact"),
     path('apply/',views.apply,name="apply"),
-    path('register/',views.regi,name="register"),
+    
     
 
 
-    path('success/', views.Success , name='success'),
-    path('userlogin/', views.userLogin, name="userlogin"),
-    path('dologin/', views.doLogin, name="dologin"),
     
     
-    path('douserregister/',views.douserregister,name="douserregister"),
+   
+    
+    
+    
 
 
 
@@ -31,6 +31,14 @@ urlpatterns = [
     path('HOD/edit_role/<str:role_id>', HOD_VIEWS.edit_role,name="edit_role"),
     path('HOD/edit_role', HOD_VIEWS.edit_role_save,name="edit_rolee_save"),
     path('HOD/role/Delete/<str:role_id>', HOD_VIEWS.DELETE_ROLE,name="delete_role"),
+    path('HOD/TRAINING',HOD_VIEWS.TRAINING_CENTER,name="training_center"),
+    path('HOD/manage_center',HOD_VIEWS.MANAGE_CENTER,name="manage_center"),
+    path('HOD/edit_center/<str:center_id>', HOD_VIEWS.edit_center,name="edit_center"),
+    path('HOD/edit_center_save', HOD_VIEWS.edit_center_save,name="edit_center_save"),
+    path('HOD/center/Delete/<str:center_id>', HOD_VIEWS.DELETE_CENTER,name="delete_center"),
+    path('HOD/Location',HOD_VIEWS.LOCATION,name="location"),
+    path('HOD/doLocation',HOD_VIEWS.doLocation,name="doLocation"),
+    # path('HOD/manage_location',HOD_VIEWS.manage_location,name="manage_location"),
     
 
 
@@ -54,6 +62,14 @@ urlpatterns = [
 
 
     ############################# MEMBER URL ###########################################
+    
+    path('register/',MEMBERS_VIEWS.register,name="register"),
+    path('douserregister/',MEMBERS_VIEWS.douserregister,name="douserregister"),
+    path('success/', MEMBERS_VIEWS.Success , name='success'),
+    path('MEMBERS/member_login', MEMBERS_VIEWS.member_login,name="member_login"),
+    path('dologin/', MEMBERS_VIEWS.doLogin, name="dologin"),
+    path('logout_user', MEMBERS_VIEWS.logout_user,name="logout"),
+   
     path('MEMBERS/Dashboard', MEMBERS_VIEWS.dashboard,name="member_dashboard"),
     path('MEMBERS/payment_information', MEMBERS_VIEWS.payment_information,name="payment_information"),
 
@@ -66,5 +82,25 @@ urlpatterns = [
     path('EMPLOYERS/doregister', EMPLOYEE_VIEWS.employer_doregister,name="employer_doregister"),
     path('EMPLOYERS/login', EMPLOYEE_VIEWS.employer_login,name="employer_login"),
     path('EMPLOYERS/dologin', EMPLOYEE_VIEWS.employer_dologin,name="employer_dologin"),
+
+
+    ########################## INSTRUCTOR URL ############################
+
+    
+    path('INSTRUCTOR/register', INSTRUCTOR_VIEWS.INSTRUCTOR_Register,name="INSTRUCTOR_Register"),
+    path('INSTRUCTOR/doregister', INSTRUCTOR_VIEWS.INSTRUCTOR_doregister,name="INSTRUCTOR_doregister"),
+    path('INSTRUCTOR/login', INSTRUCTOR_VIEWS.instructor_login,name="instructor_login"),
+    path('INSTRUCTOR/dologin', INSTRUCTOR_VIEWS.instructor_dologin,name="instructor_dologin"),
+    path('INSTRUCTOR/Dashboard', INSTRUCTOR_VIEWS.dashboard,name="instructor_dashboard"),
+    path('INSTRUCTOR/add_course', INSTRUCTOR_VIEWS.add_course,name="add_course"),
+
+
+
+    ################################## Training URL #####################   
+
+    path('TRAINING/register', TRAINING_VIEWS.TRAINING_Register,name="TRAINING_Register"),
+    path('TRAINING/login', TRAINING_VIEWS.TRAINING_login,name="TRAINING_login"),
+    path('TRAINING/process', TRAINING_VIEWS.TRAINING_process,name="TRAINING_process"),
+
 
 ]

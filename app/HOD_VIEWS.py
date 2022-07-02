@@ -238,3 +238,95 @@ def manage_members(request):
     member = Member.objects.all()
 
     return render(request,'HOD/manage_members.html',{'member':member})
+
+
+
+def TRAINING_CENTER(request):
+    if request.method == 'POST':
+        center_name = request.POST.get('training')
+
+        try:
+            
+            if Center.objects.filter(center_name = center_name).exists():
+                messages.warning(request,center_name + " is already Taken ")
+                return redirect('training_center')
+            center = Center.objects.create(center_name=center_name)
+            center.save()
+            messages.success(request,"Successfully Created Center")
+            return HttpResponseRedirect(reverse("training_center"))
+        except:
+            messages.error(request,"Failed to Create Role")
+            return HttpResponseRedirect(reverse("training_center"))
+
+    return render(request,'HOD/training.html')
+
+
+def MANAGE_CENTER(request):
+    center = Center.objects.all()
+    return render(request,'HOD/manage_center.html',{'center':center})
+
+
+
+def edit_center(request,center_id):
+    center=Center.objects.get(id=center_id)
+    return render(request,"HOD/edit_role.html",{"center":center,"id":center_id})
+
+
+
+def edit_center_save(request):
+    if request.method!="POST":
+        return HttpResponse("<h2>Method Not Allowed</h2>")
+    else:
+        center_id=request.POST.get("center_id")
+        center_name=request.POST.get("center_name")
+        # last_name=request.POST.get("lname")
+        # email=request.POST.get("email")
+        # username=request.POST.get("username")
+        # address=request.POST.get("address")
+
+        try:
+            center=Center.objects.get(id=center_id)
+            center.center_name=center_name
+            # user.last_name=last_name
+            # user.email=email
+            # user.username=username
+            center.save()
+
+            # employee_model=Employee.objects.get(admin=employee_id)
+            # employee_model.address=address
+            # employee_model.save()
+            messages.success(request,"Successfully Updated Center")
+            return HttpResponseRedirect(reverse("manage_center"))
+        except:
+            messages.error(request,"Failed to Updated Center")
+            return HttpResponseRedirect(reverse("manage_center"))
+
+
+
+
+def DELETE_CENTER(request,center_id):
+    
+    # agent = SuperAgent.objects.get(admin=id)
+    center = Center.objects.get(id=center_id)
+    center.delete()
+    messages.success(request,"Record are Successfully Deleted")
+    return redirect('manage_center')
+
+
+def LOCATION(request):
+
+    center = Center.objects.all()
+    return render(request,'HOD/location.html',{'center':center})
+
+def doLocation(request):
+    if request.method == "POST":
+        center_id = request.POST.get('center_id')
+        location = request.POST.get('location')
+        center=Center.objects.get(id=center_id)
+
+        loc = Location.objects.create(center_name=center,location=location)
+        loc.save()
+
+        
+
+    return render(request,'HOD/location.html')
