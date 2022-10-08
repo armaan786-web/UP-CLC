@@ -1,0 +1,81 @@
+{% load widget_tweaks %}
+{% comment %} {% load widget_tweaks %} {% endcomment %}
+{% with WIDGET_ERROR_CLASS='is-invalid' %}
+
+  <div class="modal-dialog modal-dialog-edit" style="min-width: 800px !important;" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal">
+          workers list
+        </h5>
+      </div>
+      <div class="modal-body">
+       
+        {% comment %} {% if booking.paid == True %} {% endcomment %}
+        <table class="table table-striped ">
+          <thead>
+            <tr class="bg-primary">
+              <th scope="col" class="text-white">#</th>
+              <th scope="col" class="text-white">Name</th>
+              <th scope="col" class="text-white">Phone No
+              </th>
+              <th scope="col" class="text-white">
+                Registration<br>date</th>
+              <th scope="col" class="text-white">Address
+              </th>
+              <th scope="col" class="text-white">Work Location
+              </th>
+              <th scope="col" class="text-white">Pin</th>
+              <th scope="col" class="text-white">Assign
+              </th>
+              <th scope="col" class="text-center text-white">Status
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            
+            {% for i in member %}
+            {% if d == "Goverment" %}
+            
+            
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{i.admin.username}}</td>
+              <td>{{i.mobile_no}}</td>
+              <td>{{i.created_at}}</td>
+              <td>{{i.address}}</td>
+              <td>{{i.city}}</td>
+              <td>{{i.pin}}</td>
+              <td><button type="button" class="btn btn-warning bg-opacity-50">Request</button></td>
+              <td class="text-center">
+                <button type="button" class="btn btn-success bg-opacity-50" hidden>Accepted</button>
+                {% comment %} <button type="button" class="btn btn-danger">Rejected</button>
+                <button type="button" class="btn btn-warning">Pending</button> {% endcomment %}
+              </td>
+            </tr>
+            
+
+            {% else %}
+            <h1>ssssssssss</h1>
+
+            {% endif %}
+            
+            
+            
+            {% endfor %}
+
+          </tbody>
+        </table>
+        {% comment %} {% elif member == "" %}
+        gggggggggg
+        {% else %}
+        hello
+        {% endif %} {% endcomment %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 7rem">Close</button>
+      </div>
+    </div>
+  </div>
+
+{% endwith %}

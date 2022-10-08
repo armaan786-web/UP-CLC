@@ -1,0 +1,856 @@
+{% extends 'BASE/base.html' %}
+{% load static %}
+
+{% block linkcss %}
+
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="{% static 'slider/css/swiper-bundle.min.css' %}">
+
+<!-- CSS -->
+<link rel="stylesheet" href="{% static 'slider/css/style.css' %}">
+
+
+{% endblock linkcss %}
+
+{% block content %}
+
+
+<style>
+  .show-case {
+    position: relative;
+
+  }
+
+
+  .showcase-item {
+    /* border: 5px solid green; */
+    position: absolute;
+    top: 75%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+
+  }
+
+  showcase-item h2 {
+    font-size: 1.5rem;
+    /* font-weight: 700; */
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .showcase-item p {
+      {
+      % comment %
+    }
+
+    color: #444;
+
+      {
+      % endcomment %
+    }
+
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .btn_nw {
+    background-color: #FFCA00;
+    color: black !important;
+    padding: 5px 20px;
+    font-size: 1rem;
+
+      {
+      % comment %
+    }
+
+    font-weight: 500;
+
+      {
+      % endcomment %
+    }
+
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+
+  }
+
+    {
+    % comment %
+  }
+
+  .btn {
+    background-color: #117964;
+    color: #fff;
+    padding: 5px 5px;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+
+  }
+
+    {
+    % endcomment %
+  }
+
+
+
+  @media only screen and (max-width: 767px) {
+    .b {
+      width: auto;
+      height: 55px;
+      font-size: 1px;
+      padding: 1px 1px;
+      margin-left: 2%;
+      letter-spacing: 1px;
+      font-weight: bolder;
+    }
+  }
+
+
+  .full {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+
+  .news {
+    width: 100%;
+    background: #cc4444;
+  }
+
+  .news marquee {
+    font-size: 18px;
+    margin-top: 12px
+  }
+
+  .news-content p {
+    display: inline;
+    color: white;
+    font-size: 20px;
+
+
+  }
+
+  .img-abc{
+   
+    {% comment %} height: auto; {% endcomment %}
+    min-width: 100%;
+    max-width:100%;
+  }
+
+  {% comment %} button css start {% endcomment %}
+
+
+  .banner-img {
+    width: 100%;
+  }
+
+  .banner-text-wrap {
+    position: absolute;
+    top: 15%;
+    right: 0%;
+    {% comment %} left: 55%; {% endcomment %}
+    {% comment %} transform: translateX(-50%); {% endcomment %}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   
+    height: 100%;
+  }
+
+
+  .banner-text h2 {
+    font-size: 28px;
+    font-family: Roboto-Bold;
+    line-height: 33px;
+    color: #fff500;
+  }
+
+  .banner-text h5 {
+    font-size: 21px;
+    line-height: 25px;
+    font-family: Roboto-Bold;
+    color: #fff101;
+    margin: 16px 0px;
+  }
+
+  .banner-text p {
+    font-size: 16px;
+    color: #ffffff;
+    font-family: Roboto-Bold;
+  }
+
+  .yellow-btn {
+    background: #fff500;
+     border-radius: 3px; 
+    width: 100%;
+    max-width: 360px;
+    {% comment %} height: 50px; {% endcomment %}
+    line-height: 38px;
+    display: inline-block;
+    text-align: center;
+    font-size: 19px;
+    font-family: Roboto-Bold;
+    color: black;
+    {% comment %} border: 1px solid black; {% endcomment %}
+  }
+  .color-btn{
+    background: #93c572 !important;
+  }
+  .flex-btn {
+    margin: 7px;
+  }
+
+  @media(min-width:992px) {
+    #ApplyLoanAssamMeghalayaBtn {
+      font-size: 11px !important;
+    }
+  }
+
+  @media (max-width: 991px) {
+    #ApplyLoanAssamMeghalayaBtn {
+      font-size: 6px !important;
+    }
+
+    #ApplStatus {
+      font-size: 10px !important;
+    }
+
+    #SVANidhiSeSamriddhiBtn {
+      font-size: 9px !important;
+    }
+
+    .banner-text {
+      text-align: right;
+    }
+
+    .banner-text .pd-l80 {
+      padding-left: 14px;
+    }
+
+    .banner-text h2 {
+      font-size: 13px;
+      line-height: normal;
+    }
+
+    .banner-text h5 {
+      font-size: 11px;
+      margin: 5px 0px;
+      line-height: normal;
+    }
+
+    .banner-text p {
+      font-size: 9px;
+    }
+
+    .yellow-btn {
+      max-width: 310px;
+      height: 40px;
+      line-height: 32px;
+      font-size: 15px;
+    }
+
+    .banner-text .mr-t30 {
+      margin-top: 5px;
+    }
+
+    .banner-silde-wrap img {
+      width: 100%;
+    }
+    .d-f-c {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .banner-silde-wrap {
+      background: #e38311;
+    }
+
+    .banner-silde-wrap img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+
+  @media(max-width:700px) {
+    .mr-t20 {
+      margin-top: 5px !important;
+    }
+  }
+
+  @media(max-width:991px) {
+    .banner-text .yellow-btn {
+      font-size: 17px !important;
+    }
+    .banner-text p {
+      font-size: 7px !important;
+    }
+
+    .left-pad{
+      margin-left:0px !important;
+    }
+
+
+
+  }
+
+  @media(max-width:575px) {
+    .banner-text h2 {
+      font-size: 10px;
+      margin: 2px;
+    }
+
+    .banner-text h5 {
+      font-size: 10px !important;
+      margin: 2px;
+    }
+
+    .banner-text p {
+      font-size: 10px;
+    }
+
+    .yellow-btn {
+      height: 30px;
+      line-height: 30px;
+      margin: 5px !important;
+    }
+
+
+    .banner-silde-wrap {
+      height: 200px !important;
+    }
+
+    .d-f-c {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .flex-btn {
+      margin: 7px;
+    }
+  }
+
+  @media(max-width:527px) {
+    .d-f-c {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+.col-sm-12 {
+      padding-right: 0px !important;
+      padding-left: 0px !important;
+    }
+
+    .col-md-12 {
+      padding-right: 0px !important;
+      padding-left: 0px !important;
+    }
+
+  }
+
+  @media (max-width: 991.98px) {
+    .flex-btn {
+      margin: 5px !important;
+      font-size: 19px !important;
+    }
+  }
+
+  @media (max-width:1199px) and (min-width:992px) {
+    .d-f-c {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      {% comment %} flex-wrap: wrap; {% endcomment %}
+    }
+
+    .yellow-btn {
+      height: 40px;
+      line-height: 32px;
+      font-size: 18px;
+      margin: 3px !important;
+    }
+
+
+
+  }
+
+  @media (min-width: 768px) {
+    .col-md-12 {
+      padding-right: 0px !important;
+      padding-left: 0px !important;
+    }
+    .d-f-c {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      {% comment %} flex-wrap: wrap; {% endcomment %}
+    }
+  }
+  @media(max-width:420px){
+    .yellow-btn {
+      max-width: 65% !important;
+      height: 25px !important;
+    line-height: 25px !important;
+  }
+  .banner-text .yellow-btn {
+    font-size: 15px !important;
+}
+}
+@media(max-width:360px){
+  .yellow-btn {
+    max-width: 80% !important;
+    height: 30px !important;
+  line-height: 25px !important;
+}
+.abcc{
+  margin-top:0px !important;
+}
+.banner-text .yellow-btn {
+  font-size: 13px !important;
+}
+}
+
+@media(max-width:362px min-width:502px){
+  .yellow-btn {
+    max-width: 300px !important;
+    height: 30px !important;
+  line-height: 25px !important;
+}
+.abcc{
+  margin-top:0px !important;
+}
+.banner-text .yellow-btn {
+  font-size: 13px !important;
+}
+}
+@media(max-width:340px){
+  .yellow-btn {
+    max-width: 300px !important;
+    height: 25px !important;
+  line-height: 25px !important;
+}
+.banner-text .yellow-btn {
+  font-size: 13px !important;
+}
+}
+@media(max-width:320px){
+  .yellow-btn {
+    max-width: 80% !important;
+    height: 20px !important;
+  line-height: 15px !important;
+}
+.banner-text .yellow-btn {
+  font-size: 10px !important;
+}
+}
+  {% comment %} button css end {% endcomment %}
+
+.abcc{
+  margin-top:1rem;
+  
+}
+
+.left-pad{
+  margin-left:5rem;
+}
+
+@media(max-width:768px){
+  .yellow-btn{
+    width:49% !important;
+  }
+  .container {
+    {% comment %} max-width: 660px !important; {% endcomment %}
+    max-width: 740px !important;
+  }
+}
+
+@media (min-width: 576px){
+   .hello {
+    {% comment %} max-width: 660px !important; {% endcomment %}
+    max-width: 740px !important;
+  }
+}
+@media(max-width:640px){
+  .banner-text .yellow-btn{
+    font-size:15px !important;
+  } 
+}
+
+@media(max-width: 590px){
+  .yellow-btn{
+    width:49% !important;
+    height:30px !important;
+    line-height:21px !important;
+    margin:2px !important;
+  }
+}
+
+@media (max-width:576px){
+.banner-text .yellow-btn{
+  font-size:14px !important;
+  
+
+}
+
+.abcc {
+   margin-top: 0px !important; 
+}
+.container {
+  padding-right: 0px !important; 
+  padding-left: 0px !important;
+}
+}
+.row {
+  margin-right: 0px !important;
+}
+
+@media(max-width:442px){
+  .yellow-btn{
+    width:100% !important;
+  }
+  .banner-main{
+    height: 60vh !important;
+  }
+  .banner-img{
+    height: 60vh !important;
+  }
+  .banner-text-wrap{
+    top: 39% !important;
+  }
+}
+
+.paddingRight{
+  padding-right: 0px;
+}
+
+</style>
+{% comment %} popup links start {% endcomment %}
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+{% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" /> {% endcomment %}
+{% comment %} <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script> {% endcomment %}
+<script>
+  $(document).ready(function () {
+    $("#myModal").modal("show");
+  });
+</script>
+<style>
+
+
+
+
+
+  @media (min-width: 576px){
+
+  .modal-dialog {
+    max-width: 100% !important;
+    margin: 1.75rem auto;
+  }
+  .modal-header .close {
+    margin-left:0rem !important;
+}
+  }
+
+</style>
+{% comment %} popup links end {% endcomment %}
+
+<main>
+
+
+  {% comment %} button adding start {% endcomment %}
+
+  {% comment %} popup start  {% endcomment %}
+
+
+
+
+  {% comment %} popup end  {% endcomment %}
+
+  <section class="banner-main">
+    <div class="banner-wrap">
+      <div class="swiper-container swiper-1">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <div class="banner-silde-wrap" style="width:100%">
+              <img class="banner-img img-fluid" src="{% static 'assets/img/homepage/baner.jpg' %}" alt="" title="">
+              <div class="container banner-text-wrap hello">
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="banner-text">
+                      <div class="ml-auto col-12 col-sm-12">
+
+                        <div class="text-right">
+                        </div>
+
+                        <div class="col-md-12 d-f-c">
+                          <a href="{% url 'register' %}" class="btn yellow-btn mr-md-4 mr-sm-2 ">कामगारो का <span>पंजीकरण </span></a>
+                          <a href="{% url 'emp_outer' %}" class="btn yellow-btn bg-primary"> कामगारो के सेवाएं  </a>
+                          
+
+                          
+                          {% comment %} <a href="Login.html" class="yellow-btn glow-btn flex-btn">Reg for house
+                            service onit</a>
+
+                          <a href="LoginSecondLoanTerm.html" class="yellow-btn glow-btn flex-btn "
+                           >Req service provide form</a> {% endcomment %}
+{% comment %} 
+                          <a href="Login.html" class="yellow-btn glow-btn flex-btn">Reg for house
+                            service onit</a>
+
+                          <a href="LoginSecondLoanTerm.html" class="yellow-btn glow-btn flex-btn "
+                           >Req service provide form</a>
+
+                          <a href="LoginThirdLoanTerm.html" class="yellow-btn glow-btn flex-btn "
+                            >Instant service provider</a>
+
+                          <a href="Login/EKYC.html" class="yellow-btn glow-btn flex-btn">Door
+                            step service provider</a>
+
+                          <a href="LORLogin.html" class="yellow-btn glow-btn  flex-btn">Reg for
+                            training Courses</a>
+                          <a href="LORLogin.html" class="yellow-btn glow-btn  flex-btn">Reg for
+                            job application</a>
+                          <a href="LORLogin.html" class="yellow-btn glow-btn  flex-btn color-btn">Employeer reg/login</a> {% endcomment %}
+                        </div>
+                        <div class="col-md-12 d-f-c mt-1">
+                          <a href="{% url 'register' %}" class="btn yellow-btn mr-md-4 mr-sm-2" style='background: #40E0D0 !important;'>सेवा प्रदाता का पंजीकरण</a>
+                          <a href="http://www.onit.fit/#/booking" class="btn yellow-btn bg-primary" style='background: #008080 !important;'>सेवा प्रदाताओं का खोज</a>
+                        </div>
+                        <div class="col-md-12 d-f-c mt-1">
+                          <a href="{% url 'register' %}" class=" btn yellow-btn bg-success mr-md-4 mr-sm-2">प्रशिक्षण के लिए आवेदन </a>
+                          <a href="{% url 'employer_register' %}" class=" btn yellow-btn bg-light">Employer  Login/Reg </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  {% comment %} button adding end {% endcomment %}
+ 
+  <div class="container-fluid mb-4 full">
+    <div class="news">
+      <marquee class="news-content">
+        <p>WELCOME TO CLC UP YOUR JOB/TRAINING PORTAL
+        </p>
+      </marquee>
+    </div>
+  </div>
+
+
+  {% comment %} <div class="our-services mt-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-tittle text-center">
+           
+            <h2>Browse Top Courses</h2>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row d-flex justify-contnet-center">
+
+        <div class="slide-container swiper">
+          <div class="slide-content">
+            <div class="card-wrapper swiper-wrapper">
+              {% for i in course %}
+              <div class="card swiper-slide">
+                <div class="image-content">
+                  <span class="overlay"></span>
+
+                  <div class="card-image">
+                    <img src="media/{{i.course_img}}" alt="" class="card-img">
+                  </div>
+                </div>
+
+                <div class="card-content">
+                  <h2 class="name">{{i.course_name}}</h2>
+                  <p class="description">{{i.course_desc}}</p>
+                </div>
+              </div>
+              {% endfor %}
+
+
+            </div>
+          </div>
+
+          <div class="swiper-button-next swiper-navBtn"></div>
+          <div class="swiper-button-prev swiper-navBtn"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="browse-btn2 text-center mt-50">
+            <a href="{% url 'course' %}" class="border-btn2">Browse All Courses</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div> {% endcomment %}
+
+  {% comment %} <section class="featured-job-area feature-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="section-tittle text-center">
+            <span>Recent Job</span>
+            <h2>Featured Jobs</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-xl-10">
+          {% for i in job %}
+
+          <div class="single-job-items mb-30">
+            <div class="job-items">
+              <div class="company-img">
+                <a href="#"><img class="img-circle" src="/media/{{i.job_img}}" alt=""
+                    style="width:150px; height:100px;" /></a>
+              </div>
+              <div class="job-tittle job-tittle2">
+                <a href="#">
+                  <h4>{{i.job_name}}</h4>
+                </a>
+                <ul>
+                  <li>{{i.company_name}}</li>
+                  <li>
+                    <i class="fas fa-map-marker-alt"></i>{{i.job_location}}
+                  </li>
+                  <li>Rs.{{i.min_sallery}} - Rs.{{i.max_sallery}}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="items-link items-link2 f-right">
+              <a href="{% url 'jobdetails' i.id %}">Full Time</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section> {% endcomment %}
+
+  <div class="container">
+
+    <div class="row mb-3">
+      <div class="col-md-8 mb-1 paddingRight">
+        <img src="{% static 'clcup_img/p2.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col-6 col-md-4 mb-1 paddingRight">
+        <img src="{% static 'clcup_img/p1.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+
+      <div class="col-6 col-md-4 mb-1 paddingRight">
+        <img src="{% static 'clcup_img/p4.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col-md-8 mb-1 paddingRight">
+        <img src="{% static 'clcup_img/p3.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+    </div>
+
+
+
+    <div class="row mb-3 ">
+      <div class="col-md-6 paddingRight">
+        <img src="{% static 'clcup_img/p5.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col-md-6 paddingRight">
+        <img src="{% static 'clcup_img/p6.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+    </div>
+
+    <div class="row mb-3 ">
+      <div class="col-6 col-md-4 paddingRight">
+        <img src="{% static 'clcup_img/p8.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col-6 col-md-8 paddingRight">
+        <img src="{% static 'clcup_img/p9.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+    </div>
+
+    <div class="row mb-3 justify-content-between">
+      <div class="col paddingRight" style="max-width: 15rem !important">
+        <img src="{% static 'clcup_img/p16.jpg' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col paddingRight" style="max-width: 22rem !important">
+        <img src="{% static 'clcup_img/p17.jpg' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col paddingRight" style="max-width: 15rem !important">
+        <img src="{% static 'clcup_img/p20.jpg' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col paddingRight" style="max-width: 22rem !important">
+        <img src="{% static 'clcup_img/p15.jpg' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+    </div>
+
+    <div class="row mb-3  justify-content-center">
+      <div class="col-6 paddingRight">
+        <img src="{% static 'clcup_img/p12.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col-6 paddingRight">
+        <img src="{% static 'clcup_img/p12.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+    </div>
+
+    <div class="row mb-3 justify-content-between">
+      <div class="col paddingRight" style="max-width: 15rem !important">
+        <img src="{% static 'clcup_img/p10.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col paddingRight" style="max-width: 22rem !important">
+        <img src="{% static 'clcup_img/p11.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col paddingRight" style="max-width: 15rem !important">
+        <img src="{% static 'clcup_img/p13.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+      <div class="col paddingRight" style="max-width: 22rem !important">
+        <img src="{% static 'clcup_img/p14.png' %}" class="rounded" alt="" style="width:100%; height:100%;">
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+{% block linkjs %}
+<!-- Swiper JS -->
+<script src="{% static 'slider/js/swiper-bundle.min.js' %}"></script>
+
+<!-- JavaScript -->
+<script src="{% static 'slider/js/script.js' %}"></script>
+{% endblock linkjs %}
+
+
+{% endblock content %}
