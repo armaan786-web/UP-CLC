@@ -80,6 +80,9 @@
     text-decoration: none !important;
   }
 </style>
+{% block linkcss %}
+<link rel="stylesheet" href="{% static 'datepicker/jquery-ui.min.css' %}">
+{% endblock linkcss %}
 <!--================Blog Area =================-->
 <section class="wrapper mt-5">
   <div class="container pt-5">
@@ -89,14 +92,14 @@
         <div class="logo">
           <img src="{% static 'assets/img/logo/fotter.jpg' %}" class="img-fluid" alt="Logo">
         </div>
-        <h3 class="text-dark fw-bolder fs-4 mb-4">Sign In to CLCUP</h3>
+        <h3 class="text-dark fw-bolder fs-4 mb-4">SIGN IN TO CLCUP</h3>
         <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" name="adhaarNo" placeholder="name@example.com">
-          <label for="floatingInput">Aadhar Number</label>
+          <input type="number" class="form-control" id="floatingInput" name="adhaarNo" placeholder="name@example.com">
+          <label for="floatingInput">AADHAR NUMBER</label>
         </div>
         <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
-          <label for="floatingPassword">Mobile No</label>
+          <input type="text" id="datepicker" class="form-control" name="password" placeholder="DOB">
+          <label for="floatingPassword">DOB</label>
         </div>
         <button type="submit" class="btn btn-success submit_btn w-100 my-4">Login</button>
         <div class="text-center text-muted text-uppercase mb-3 "></div>
@@ -105,4 +108,19 @@
   </div>
 </section>
 <!--================Blog Area =================-->
+{% block linkjs %}
+<script src="{% static 'datepicker/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'datepicker/jquery-ui.min.js' %}"></script>
+{% endblock linkjs %}
+
+<script>
+  $(document).ready(function () {
+    $('#datepicker').datepicker({
+      yearRange: "-100:+10",
+      dateFormat: "yy-mm-dd",
+      changeMonth: true,
+      changeYear: true
+    });
+  });
+</script>
 {% endblock content %}

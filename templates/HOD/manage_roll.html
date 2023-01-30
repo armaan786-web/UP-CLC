@@ -3,24 +3,27 @@
 {% block content %}
 <div class="hk-pg-wrapper">
     <nav class="hk-breadcrumb" aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-light bg-transparent">
-            <li class="breadcrumb-item"><a href="#">Manage</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Role</li>
+        <ol class="breadcrumb breadcrumb-light bg-transparent p-2 border-0">
+            <li class="breadcrumb-item d-none"><a href="#">Manage</a></li>
+            <li class="breadcrumb-item active d-none" aria-current="page">Role</li>
         </ol>
     </nav>
     <div class="container">
 
         <!-- Title -->
-        <div class="hk-pg-header">
+        {% comment %} <div class="hk-pg-header">
             <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>MANAGE ROLE</h4>
-        </div>
+        </div> {% endcomment %}
         <!-- /Title -->
 
         <!-- Row -->
         <div class="row">
             <div class="col-xl-12">
-                <section class="hk-sec-wrapper">
-                    <h5 class="hk-sec-title">MANAGE ROLE</h5>
+                <section class="hk-sec-wrapper rounded-20">
+                    <div class="row justify-content-between">
+                        <a href="{% url 'manage_role' %}" class="ml-3"><h5 class="hk-sec-title" style="border-bottom: 3px solid #ab26aa; font-weight: 700;">MANAGE ROLE</h5></a>
+                        <a href="{% url 'add_role' %}" class="btn btn-primary mr-3"><h6 class="hk-sec-title mb-0 fw-bolder text-white">ADD ROLE</h6></a>
+                    </div>
                     {% include 'HOD/includes/messages.html' %}
                     <hr>
                     <div class="row">
@@ -46,7 +49,7 @@
                                             {% comment %} <th>Last Login</th>
                                             <th>Date Joined</th> {% endcomment %}
                                             <th>Worker</th>
-                                            <th>Booking</th>
+                                            <th>Employer</th>
                                             <th style="width:120px !important">Action</th>
                                             {% comment %} <th>Employer</th>
                                             <th>Worker</th> {% endcomment %}
@@ -113,23 +116,11 @@
                                         {% endfor %}
                                        
                                        
-                                       
-                                       
-                                       
-                                        
-                                       
-                                     
-                                        
-                                      
-                                      
-                                       
-                                       
-                                       
-                                        
+                              
                                     </tbody>
                                     
                                 </table>
-                                <button type="submit" class="btn btn-info">Update</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                             </div>
                         </div>

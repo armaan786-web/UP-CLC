@@ -57,6 +57,7 @@
 </head>
 
 <body>
+ {% include 'BASE/header.html' %}
    {% block content %}
    <!-- Preloader Start -->
    {% comment %}
@@ -74,12 +75,13 @@
    <!-- Preloader Start -->
    <!-- start header -->
 
-   {% include 'BASE/header.html' %}
+  
 
    <!-- end header -->
 
 
    {% endblock content %}
+   
 
    <!-- Footer Area start -->
    {% include 'BASE/footer.html' %}
@@ -113,6 +115,7 @@
    <script src="{% static '/assets/js/jquery.ajaxchimp.min.js' %}"></script>
    <!-- Jquery Plugins, main Jquery -->
    <script src="{% static '/assets/js/plugins.js' %}"></script>
+   <script src="{% static '/assets/js/main.js' %}"></script>
    <script src="{% static '/assets/js/vendor/blog.js' %}"></script>
    <script src="http://translate.google.com/translate_a/element.js?cb=loadGoogleTranslate"></script>
    <script>

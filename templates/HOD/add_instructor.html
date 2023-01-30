@@ -1,11 +1,11 @@
 {% extends 'HOD/includes/base.html' %}
 {% block content %}
 <div class="hk-wrapper hk-vertical-nav">
-<div class="hk-pg-wrapper bgcolor">
+<div class="hk-pg-wrapper">
     <nav class="hk-breadcrumb" aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-light bg-transparent p-4">
-            <li class="breadcrumb-item"><a class="text-white" href="#">Instructor</a></li>
-            <li class="breadcrumb-item active text-white" aria-current="page">Add Instructor</li>
+        <ol class="breadcrumb breadcrumb-light bg-transparent p-2 border-0">
+            <li class="breadcrumb-item d-none"><a class="text-white" href="#">Instructor</a></li>
+            <li class="breadcrumb-item active text-white d-none" aria-current="page">Add Instructor</li>
         </ol>
     </nav>
     <div class="container">
@@ -14,13 +14,16 @@
                
               
                 
-                <section class="hk-sec-wrapper">
-                    <h5 class="hk-sec-title">ADD INSTRUCTOR</h5>
+                <section class="hk-sec-wrapper rounded-20">
+                    <div class="row justify-content-between">
+                        <a href="{% url 'add_instructor' %}" class="ml-3"><h5 class="hk-sec-title" style="border-bottom: 3px solid #ab26aa; font-weight: 700;">ADD INSTRUCTOR</h5></a>
+                        <a href="{% url 'manage_instructor' %}" class="btn btn-primary mr-3"><h6 class="hk-sec-title mb-0 fw-bolder text-white">MANAGE INSTRUCTOR</h6></a>
+                    </div>
                     <hr>
                     {% include 'HOD/includes/messages.html' %}
                     <div class="row">
                         <div class="col-sm">
-                            <form class="needs-validation" novalidate method="POST" action="{% url 'do_instructor_signup' %}">
+                            <form class="needs-validation" novalidate method="POST" action="">
                                 {% csrf_token %}
                                 <div class="form-row">
                                     <div class="col-md-4 mb-15">

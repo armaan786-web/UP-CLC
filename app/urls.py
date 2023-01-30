@@ -19,10 +19,15 @@ urlpatterns = [
     path('contact/',views.contact,name="contact"),
     path('profile',views.profile,name="profile"),
     path('apply/',views.apply,name="apply"),
+    path('gallery/',views.gallery,name="gallery"),
+    path('manage_gallery/',views.manage_gallery,name="manage_gallery"),
+    path('add_gallery/',views.add_gallery,name="add_gallery"),
+    path('show_galary',views.show_galary,name="show_galary"),
     
   
-
-    path('HOD/Dashboard',HOD_VIEWS.HOD,name="hod_dashboard"),
+    path('HOD/login2',HOD_VIEWS.login2, name="hod_login2"),
+    path('HOD/dologin2',HOD_VIEWS.dologin2, name="hod_dologin2"),
+    path('clc/',HOD_VIEWS.HOD,name="hod_dashboard"),
     path('HOD/add_city',HOD_VIEWS.ADD_CITY,name="add_city"),
     path('HOD/manage_city',HOD_VIEWS.MANAGE_CITY,name="manage_city"),
     path('HOD/edit_city/<int:id>',HOD_VIEWS.edit_city,name="edit_city"),
@@ -113,6 +118,7 @@ urlpatterns = [
 
 
     path('worlker_list/<int:id>',views.worlker_list,name="worlker_list"),
+    path('booking_success/', views.booking_Success , name='bookingSuccess'),
 
 
     ########################## INSTRUCTOR URL ############################
@@ -152,3 +158,8 @@ urlpatterns = [
 
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+
+
+
+# ==========================================Gallery====================================
+

@@ -115,11 +115,11 @@ def douserregister(request):
         context = {
             
         'username':username,
-        'father_name':father_name,
+        # 'father_name':father_name,
         'mobile_no':mobile_no,
         'adhaar':adhaar,     
         'payment':payment,
-        # 'demo':demo
+        'dob':dob
 
         }
 

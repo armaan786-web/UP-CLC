@@ -17,33 +17,49 @@
     <div class="container shadow-lg pt-3 pb-3 course" style=" border-radius: 5px !important;">
       <div class="row text ">
         <div class="col pa-0">
-          <div>
-            <form action="" method="POST">
-              {% csrf_token %}
-            <select id="select1" class="form-select form-control" name="city_search">
-              <option selected disabled="true">----City----</option>
-              {% for i in city %}
-              {% if i.active %}
-              <option value="{{i.id}}">{{i.city}}</option>
-              {% endif %}
-              {% endfor %}
-            </select>
-          </div>
-          <div>
-            <select  class="form-select form-control my-2" id="select2" name="testing" >
-              <option selected disabled="true">Role</option>
-              {% for role in role %}
-              {% if role.is_employer %}
-              {% comment %} <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option> {% endcomment %}
-              <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option>
-              {% endif %}
-              {% endfor %}
-              
-            </select>
 
-            <input type="submit" value="Search" class=" btn-success my-2">
-            </form>
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col">
+                <select id="select1" class="form-select form-control" name="city_search">
+                  <option selected disabled="true">----City----</option>
+                  {% for i in city %}
+                  {% if i.active %}
+                  <option value="{{i.id}}">{{i.city}}</option>
+                  {% endif %}
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            
+
+          <div  class="row">
+            <div class="col">
+              <select  class="form-select form-control my-2" id="select2" name="testing" hidden>
+                <option selected disabled="true">Role</option>
+                {% for role in role %}
+                {% if role.is_worker %}
+                <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option>
+                {% comment %} <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option> {% endcomment %}
+                {% endif %}
+                {% endfor %}
+                
+              </select>
+            </div>
           </div>
+
+            <div class="row justify-content-center mt-2">
+              <div class="col-3">
+                <button type="submit" class="bg-success w-100 border-0 p-2" value="Search" style="border-radius: .25rem">
+                  Submit
+                </button>
+              </div>
+            </div>
+        </form>
+        <hr class="mb-3 mt-2">
+
           <form method="POST" action="{% url 'do_emp_outer' %}" onsubmit="return validation()">
             {% csrf_token %}
             <input type="text" value="200" name="amount" hidden>
@@ -72,7 +88,7 @@
                   </div>
 
                   <div class="col-6 col-md-6 form-group">
-                    <input class="form-control" placeholder="Number of Workers"  type="number" name="no_of_worker" id="workersCount" required/>
+                    <input class="form-control numberWorkers" placeholder="Number of Workers"  type="number" name="no_of_worker" id="workersCount" required/>
                     <span id="wnameerror" class="text-danger font-weight-bold"></span>
                   </div>
                   <div class="col-6 form-group">
@@ -121,8 +137,8 @@
                       placeholder="Specific Require " ></textarea>
                   </div>
 
-                  <div class="col-12 form-group">
-                    <input class="form-control" placeholder="Monthly payout"  type="text" name="salary"  required/>
+                  <div class="col-6 form-group">
+                    <input class="form-control" placeholder="Monthly payout"  type="text" name="salary" id="monthlyPayout"  readonly/>
                   </div>
  
                   {% comment %} <div class="col-6 col-md-6 form-group">
@@ -135,7 +151,7 @@
                       name="mobile_no" id="mobileNumber" required/>
                       <span id="mnameerror" class="text-danger font-weight-bold"></span>
                   </div>  {% endcomment %}
-                  <div class="col-8 col-md-6 form-group" required>
+                  {% comment %} <div class="col-8 col-md-6 form-group" required>
                     <div class="form-check form-check-inline">
                       <label class="form-check-label" for="inlineRadio1">Requirement for goverment department?</label>
                     </div>
@@ -149,12 +165,15 @@
                         value="Private" required>
                       <label class="form-check-label" for="inlineRadio2">No</label>
                     </div>
-                  </div>
-
-                  <div class="col-4 col-md-6 form-group">
+                  </div> {% endcomment %}
+                  <input type="text" name="goverment2" value="{{sectn}}" hidden>
+                  
+                  {% if employer_obj.section == "Goverment" %}
+                  <div class="col-6 col-md-6 form-group">
                     <input class="form-control" placeholder="Department Name"  type="text"
                       name="dep_name" id="department" />
                   </div>
+                  {% endif %}
 
                   <div class="col-12 form-check">
                     <input class="form-check-input" type="checkbox"  style="margin-left: 0.2rem !important" name="demoo" required>
@@ -164,20 +183,13 @@
                     </label>
                   </div>
                 </div>
-                
-
-
-
-
-
-               
 
                 <div class="row justify-content-between border-top">
                   {% comment %} <div class="modal-footer border-top-0">
                     <span>Take Membership <a href="{% url 'employer_register' %}" class='text-primary'>Registar</a></span>
                   </div> {% endcomment %}
                   <div class="modal-footer border-top-0">
-                    <button type="submit" class="btn head-btn1 bg-success" id="next" onclick="display()">
+                    <button type="submit" class="btn head-btn bg-success" id="next" onclick="display()">
                       submit
                     </button>
                   </div>
@@ -203,6 +215,21 @@
 <script src="{% static 'datepicker/jquery-ui.min.js' %}"></script>
 {% endblock linkjs %}
 <script>
+
+//monthlyPayout js code start
+
+const workersCount = document.getElementById("workersCount");
+const monthlyPayout = document.getElementById("monthlyPayout"); 
+
+workersCount.addEventListener("keyup", (event)=>{
+  if(parseInt(workersCount.value) > 0){
+    monthlyPayout.value = parseInt(workersCount.value) * 9000
+
+  }else{
+    monthlyPayout.value = 0;
+  }
+});
+
 
   {% comment %} date JavaScript {% endcomment %}
   $(document).ready(function () {
@@ -282,6 +309,9 @@
    }
 
   {% comment %} department end {% endcomment %}
+
+
+
 </script>
 
 <script>
@@ -292,4 +322,6 @@
 
   }
 </script>
+
+
 {% endblock content %}

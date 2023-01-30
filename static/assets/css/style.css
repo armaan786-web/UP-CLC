@@ -185,6 +185,7 @@ button {
   color: #fff;
   outline: medium none;
 }
+
 button:focus,
 input:focus,
 input:focus,
@@ -192,6 +193,18 @@ textarea,
 textarea:focus {
   outline: 0;
 }
+input[type=text]{
+  text-transform: uppercase !important;
+}
+input[type=number]{
+  text-transform: uppercase !important;
+}
+textarea{
+  text-transform: uppercase !important;
+ }
+select{
+  text-transform: uppercase !important;
+ }
 .uppercase {
   text-transform: uppercase;
 }
@@ -4730,6 +4743,7 @@ del {
 .slicknav_nav {
   margin-top: -3px;
 }
+
 .mobile_menu {
   position: absolute;
   right: 0px;
@@ -6384,4 +6398,511 @@ form.search-box .search-form a {
   outline: 0;
   background: #242b5e;
   color: #fff;
+}
+
+/*---------------------------------css start  start---------------------------------------*/
+/* -------------------------------------------------------------------------------------- */
+
+button{
+  cursor: pointer;
+}
+input[type=file]{
+  cursor: pointer;
+}
+
+
+.show-case {
+  position: relative;
+
+}
+
+
+.showcase-item {
+  /* border: 5px solid green; */
+  position: absolute;
+  top: 75%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+
+}
+
+showcase-item h2 {
+  font-size: 1.5rem;
+  /* font-weight: 700; */
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.showcase-item p {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.btn_nw {
+  background-color: #FFCA00;
+  color: black !important;
+  padding: 5px 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+}
+
+
+.btn {
+  background-color: #117964;
+  color: #fff;
+  padding: 5px 5px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+
+}
+@media only screen and (max-width: 767px) {
+  .b {
+    width: auto;
+    height: 55px;
+    font-size: 1px;
+    padding: 1px 1px;
+    margin-left: 2%;
+    letter-spacing: 1px;
+    font-weight: bolder;
+  }
+}
+
+
+.full {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+.news {
+  width: 100%;
+  background: #cc4444;
+}
+
+.news marquee {
+  font-size: 18px;
+  margin-top: 12px
+}
+
+.news-content p {
+  display: inline;
+  color: white;
+  font-size: 20px;
+
+
+}
+
+.img-abc{
+  min-width: 100%;
+  max-width:100%;
+}
+
+.banner-img {
+  width: 100%;
+}
+
+.banner-text-wrap {
+  position: absolute;
+  top: 15%;
+  right: 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+
+.banner-text h2 {
+  font-size: 28px;
+  font-family: Roboto-Bold;
+  line-height: 33px;
+  color: #fff500;
+}
+
+.banner-text h5 {
+  font-size: 21px;
+  line-height: 25px;
+  font-family: Roboto-Bold;
+  color: #fff101;
+  margin: 16px 0px;
+}
+
+.banner-text p {
+  font-size: 16px;
+  color: #ffffff;
+  font-family: Roboto-Bold;
+}
+
+.yellow-btn {
+  background: #fff500;
+   border-radius: 3px; 
+  width: 100%;
+  max-width: 360px;
+  line-height: 38px;
+  display: inline-block;
+  text-align: center;
+  font-size: 19px;
+  font-family: Roboto-Bold;
+  color: black;
+}
+.color-btn{
+  background: #93c572 !important;
+}
+.flex-btn {
+  margin: 7px;
+}
+
+@media(min-width:992px) {
+  #ApplyLoanAssamMeghalayaBtn {
+    font-size: 11px !important;
+  }
+}
+
+@media (max-width: 991px) {
+  #ApplyLoanAssamMeghalayaBtn {
+    font-size: 6px !important;
+  }
+
+  #ApplStatus {
+    font-size: 10px !important;
+  }
+
+  #SVANidhiSeSamriddhiBtn {
+    font-size: 9px !important;
+  }
+
+  .banner-text {
+    text-align: right;
+  }
+
+  .banner-text .pd-l80 {
+    padding-left: 14px;
+  }
+
+  .banner-text h2 {
+    font-size: 13px;
+    line-height: normal;
+  }
+
+  .banner-text h5 {
+    font-size: 11px;
+    margin: 5px 0px;
+    line-height: normal;
+  }
+
+  .banner-text p {
+    font-size: 9px;
+  }
+
+  .yellow-btn {
+    max-width: 310px;
+    height: 40px;
+    line-height: 32px;
+    font-size: 15px;
+  }
+
+  .banner-text .mr-t30 {
+    margin-top: 5px;
+  }
+
+  .banner-silde-wrap img {
+    width: 100%;
+  }
+  .d-f-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 575px) {
+  .banner-silde-wrap {
+    background: #e38311;
+  }
+
+  .banner-silde-wrap img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@media(max-width:700px) {
+  .mr-t20 {
+    margin-top: 5px !important;
+  }
+}
+
+@media(max-width:991px) {
+  .banner-text .yellow-btn {
+    font-size: 17px !important;
+  }
+  .banner-text p {
+    font-size: 7px !important;
+  }
+
+  .left-pad{
+    margin-left:0px !important;
+  }
+
+
+
+}
+
+@media(max-width:575px) {
+  .banner-text h2 {
+    font-size: 10px;
+    margin: 2px;
+  }
+
+  .banner-text h5 {
+    font-size: 10px !important;
+    margin: 2px;
+  }
+
+  .banner-text p {
+    font-size: 10px;
+  }
+
+  .yellow-btn {
+    height: 30px;
+    line-height: 30px;
+    margin: 5px !important;
+  }
+
+
+  .banner-silde-wrap {
+    height: 200px !important;
+  }
+
+  .d-f-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .flex-btn {
+    margin: 7px;
+  }
+}
+
+@media(max-width:527px) {
+  .d-f-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+.col-sm-12 {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+  .col-md-12 {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+}
+
+@media (max-width: 991.98px) {
+  .flex-btn {
+    margin: 5px !important;
+    font-size: 19px !important;
+  }
+}
+
+@media (max-width:1199px) and (min-width:992px) {
+  .d-f-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .yellow-btn {
+    height: 40px;
+    line-height: 32px;
+    font-size: 18px;
+    margin: 3px !important;
+  }
+
+
+
+}
+
+@media (min-width: 768px) {
+  .col-md-12 {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  .d-f-c {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media(max-width:420px){
+  .yellow-btn {
+    max-width: 65% !important;
+    height: 25px !important;
+  line-height: 25px !important;
+}
+.banner-text .yellow-btn {
+  font-size: 15px !important;
+}
+}
+@media(max-width:360px){
+.yellow-btn {
+  max-width: 80% !important;
+  height: 30px !important;
+line-height: 25px !important;
+}
+.abcc{
+margin-top:0px !important;
+}
+.banner-text .yellow-btn {
+font-size: 13px !important;
+}
+}
+
+@media(max-width:362px) and  (min-width:502px){
+.yellow-btn {
+  max-width: 300px !important;
+  height: 30px !important;
+  line-height: 25px !important;
+}
+.abcc{
+margin-top:0px !important;
+}
+.banner-text .yellow-btn {
+font-size: 13px !important;
+}
+}
+@media(max-width:340px){
+.yellow-btn {
+  max-width: 300px !important;
+  height: 25px !important;
+line-height: 25px !important;
+}
+.banner-text .yellow-btn {
+font-size: 13px !important;
+}
+}
+@media(max-width:320px){
+.yellow-btn {
+  max-width: 80% !important;
+  height: 20px !important;
+line-height: 15px !important;
+}
+.banner-text .yellow-btn {
+font-size: 10px !important;
+}
+}
+
+.abcc{
+margin-top:1rem;
+
+}
+
+.left-pad{
+margin-left:5rem;
+}
+
+@media(max-width:768px){
+.yellow-btn{
+  width:49% !important;
+}
+.container {
+  max-width: 740px !important;
+}
+}
+
+@media (min-width: 576px){
+ .hello {
+  max-width: 740px !important;
+}
+}
+@media(max-width:640px){
+.banner-text .yellow-btn{
+  font-size:15px !important;
+} 
+}
+
+@media(max-width: 590px){
+.yellow-btn{
+  width:49% !important;
+  height:30px !important;
+  line-height:21px !important;
+  margin:2px !important;
+}
+}
+
+@media (max-width:576px){
+.banner-text .yellow-btn{
+font-size:14px !important;
+
+
+}
+
+.abcc {
+ margin-top: 0px !important; 
+}
+.container {
+padding-right: 0px !important; 
+padding-left: 0px !important;
+}
+}
+.row {
+margin-right: 0px !important;
+}
+
+@media(max-width:442px){
+.yellow-btn{
+  width:100% !important;
+}
+.banner-main{
+  height: 60vh !important;
+}
+.banner-img{
+  height: 60vh !important;
+}
+.banner-text-wrap{
+  top: 39% !important;
+}
+}
+
+.paddingRight{
+padding-right: 0px;
+}
+
+.head-btn{
+  padding: .375rem .75rem !important;
+  line-height: 1.5 !important;
+  border-radius: .25rem !important;
+}
+
+
+
+.gallery_img_height{
+  height: 250px;
+  
+}
+
+
+@media(max-width:500px){
+  .gallery_img_height{
+    min-height: 200px;
+    padding-right: 0px !important;
+  }
 }

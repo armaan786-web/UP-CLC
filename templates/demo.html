@@ -2,7 +2,10 @@
 {% comment %} {% load widget_tweaks %} {% endcomment %}
 {% with WIDGET_ERROR_CLASS='is-invalid' %}
 
-  <div class="modal-dialog modal-dialog-edit" style="min-width: 800px !important;" >
+{% comment %} <div class="modal-dialog modal-dialog-edit" style="min-width: 800px !important;" > {% endcomment %}
+  <!--model Button booking_list.html(line No 19)-->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" >
+   <div class="modal-dialog modal-dialog-edit">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="modal">
@@ -10,9 +13,9 @@
         </h5>
       </div>
       <div class="modal-body">
-       
+        <form hx-post="{{ request.path }}" hx-headers='{"X-CSRFToken":"{{ csrf_token }}"}' class="modal-content">
         {% comment %} {% if booking.paid == True %} {% endcomment %}
-        <table class="table table-striped ">
+        <table class="table table-striped table-responsive">
           <thead>
             <tr class="bg-primary">
               <th scope="col" class="text-white">#</th>
@@ -33,11 +36,19 @@
             </tr>
           </thead>
           <tbody>
+           {% comment %} <h1>{% if {{boo.goverment == "Goverment"}} %}helloo{% endif %}</h1> {% endcomment %}
+           {% comment %} {{g}}
+          {% for i in g %}
+          {{i}}
+          
+          {% endfor %} {% endcomment %}
+            {% comment %} {% if boo. %}{% endif %} {% endcomment %}
             
-            {% for i in member %}
-            {% if d == "Goverment" %}
+            {% for i in mem %}
             
+            {% comment %} {% if d == "Goverment" %} {% endcomment %}
             
+            {% if emp_gov.section == 'Goverment' %}
             <tr>
               <th scope="row">{{forloop.counter}}</th>
               <td>{{i.admin.username}}</td>
@@ -49,23 +60,61 @@
               <td><button type="button" class="btn btn-warning bg-opacity-50">Request</button></td>
               <td class="text-center">
                 <button type="button" class="btn btn-success bg-opacity-50" hidden>Accepted</button>
-                {% comment %} <button type="button" class="btn btn-danger">Rejected</button>
-                <button type="button" class="btn btn-warning">Pending</button> {% endcomment %}
+               
               </td>
             </tr>
-            
-
+            {% elif monthly.paid == True %}
+            <tr>
+              <th scope="row">{{forloop.counter}}</th>
+              <td>{{i.admin.username}}</td>
+              <td>{{i.mobile_no}}</td>
+              <td>{{i.created_at}}</td>
+              <td>{{i.address}}</td>
+              <td>{{i.city}}</td>
+              <td>{{i.pin}}</td>
+              <td><button type="button" class="btn btn-warning bg-opacity-50">Request</button></td>
+              <td class="text-center">
+                <button type="button" class="btn btn-success bg-opacity-50" hidden>Accepted</button>
+               
+              </td>
+            </tr>
             {% else %}
-            <h1>ssssssssss</h1>
 
+            {% comment %} payemt editing start  {% endcomment %}
+            <div class="card" style="width: 21rem; margin: 15px auto;">
+              <div class="card-header text-center">
+                <i class="fa-light fa-circle-check"></i>
+                <h5 class="card-title">PAYMENT CONFIRM</h5>
+                <h6 class="card-subtitle mb-2 text-muted">UPCLC</h6>
+              </div>
+              <div class="card-body text-center">
+                <div class="d-flex justify-content-between">
+                  <p class="text-muted">No of Workers</p>
+                  <p class="text-dark">3</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <p class="text-muted">One Worker</p>
+                  <p class="text-dark">3000</p>
+                </div>
+                <div class="d-flex justify-content-between fw-bolder">
+                  <p class="text-dark">Total Amount</p>
+                  <p class="text-dark">9000</p>
+                </div>
+
+                <input type="text" value="{{monthly.total_monthly}}" name="amt" hidden>
+                <a id="rzp-button1" ><button type="submit" class="btn btn-primary btn">Pay Now</button></a>
+              </div>
+            </div>
+            {% comment %} payemt editing start  {% endcomment %}
+           
+            {% comment %} <button type="submit" class="btn btn-warning">Save</button> {% endcomment %}
+          
             {% endif %}
-            
-            
-            
             {% endfor %}
 
           </tbody>
         </table>
+        </form>
         {% comment %} {% elif member == "" %}
         gggggggggg
         {% else %}
@@ -76,6 +125,38 @@
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="width: 7rem">Close</button>
       </div>
     </div>
+   </div>
   </div>
 
+  <form action='{% url 'bookingSuccess' %}' method="POST">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+       var options = {
+           "key": "rzp_test_czVP739sBN5blU", // Enter the Key ID generated from the Dashboard
+           "amount": "{{total_price}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+           "currency": "INR",
+           "name": "Ayodhya",
+           "description": "Transaction",
+           "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+           "callback_url": "http://127.0.0.1:8000/booking_success/",
+           "notes": {
+               "address": "Razorpay Corporate Office"
+           },
+           "prefill": {
+            "name": "Armaan Alam",
+            "email": "armaanalam65@gmail.com",
+            "contact": "9973884727"
+        },
+           "theme": {
+               "color": "#3399cc"
+           }
+       };
+       var rzp1 = new Razorpay(options);
+       document.getElementById('rzp-button1').onclick = function(e){
+           rzp1.open();
+           e.preventDefault();
+       }
+    </script>
+  </form>
+    
 {% endwith %}

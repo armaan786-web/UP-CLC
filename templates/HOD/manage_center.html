@@ -3,24 +3,27 @@
 {% block content %}
 <div class="hk-pg-wrapper">
     <nav class="hk-breadcrumb" aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-light bg-transparent">
-            <li class="breadcrumb-item"><a href="#">Manage</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Center</li>
+        <ol class="breadcrumb breadcrumb-light bg-transparent p-2 border-2">
+            <li class="breadcrumb-item d-none"><a href="#">Manage</a></li>
+            <li class="breadcrumb-item active d-none" aria-current="page">Center</li>
         </ol>
     </nav>
     <div class="container">
 
         <!-- Title -->
-        <div class="hk-pg-header">
+        {% comment %} <div class="hk-pg-header">
             <h4 class="hk-pg-title"><span class="pg-title-icon"><span class="feather-icon"><i data-feather="database"></i></span></span>MANAGE CENTER</h4>
-        </div>
+        </div> {% endcomment %}
         <!-- /Title -->
 
         <!-- Row -->
         <div class="row">
             <div class="col-xl-12">
-                <section class="hk-sec-wrapper">
-                    <h5 class="hk-sec-title">MANAGE CENTER</h5>
+                <section class="hk-sec-wrapper rounded-20">
+                    <div class="row justify-content-between">
+                        <a href="{% url 'manage_center' %}" class="ml-3"><h5 class="hk-sec-title" style="border-bottom: 3px solid #ab26aa; font-weight: 700;">MANAGE CENTER</h5></a>
+                        <a href="{% url 'training_center' %}" class="btn btn-primary mr-3"><h6 class="hk-sec-title mb-0 fw-bolder text-white">ADD CENTER</h6></a>
+                    </div>
                     {% include 'HOD/includes/messages.html' %}
                     <hr>
                     <div class="row">

@@ -3,19 +3,19 @@
 <div class="hk-wrapper hk-vertical-nav">
 <div class="hk-pg-wrapper ">
     <nav class="hk-breadcrumb" aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-light bg-transparent p-4">
-            <li class="breadcrumb-item"><a  href="#">Training</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Center</li>
+        <ol class="breadcrumb breadcrumb-light bg-transparent p-2 border-0">
+            <li class="breadcrumb-item d-none"><a  href="#">Training</a></li>
+            <li class="breadcrumb-item active d-none" aria-current="page">Center</li>
         </ol>
     </nav>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-               
-              
-                
-                <section class="hk-sec-wrapper">
-                    <h5 class="hk-sec-title">ADD CENTER</h5>
+                <section class="hk-sec-wrapper rounded-20">
+                    <div class="row justify-content-between">
+                        <a href="{% url 'training_center' %}" class="ml-3"><h5 class="hk-sec-title" style="border-bottom: 3px solid #ab26aa; font-weight: 700;">ADD CENTER</h5></a>
+                        <a href="{% url 'manage_center' %}" class="btn btn-primary mr-3"><h6 class="hk-sec-title fw-bolder mb-0 text-white">MANAGE CENTER</h6></a>
+                    </div>
                     <hr>
                     {% include 'HOD/includes/messages.html' %}
                     <div class="row">

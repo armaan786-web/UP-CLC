@@ -7,13 +7,17 @@ from ckeditor.fields import RichTextField
 # Create your models here.
 
 
+
 class CustomUser(AbstractUser):
     user_type_data=((1,"HOD"),(2,"Employee"),(3,"Instructor"),(4,"members"),(5,"Training"))
     user_type=models.CharField(default=1,choices=user_type_data,max_length=10)
     adhaar = models.CharField(max_length=50,null=True,blank=True)
     profile_pic = models.ImageField(upload_to = 'media/profile_pic')
     pan_no = models.CharField(max_length=100,null=True,blank=True)
-    
+
+
+class gallary(models.Model):
+    galary_pic = models.ImageField(upload_to = 'Galary', null= True, blank=True)
 
 class AdminHOD(models.Model):
     admin=models.OneToOneField(CustomUser,on_delete=models.CASCADE)
@@ -99,6 +103,7 @@ class Booking(models.Model):
     department = models.CharField(max_length=50,null=True,blank=True)
     total_monthly = models.IntegerField(blank=True,null=True)
     paid=models.BooleanField(default=False)
+    payment_id=models.CharField(max_length=70)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
@@ -202,8 +207,8 @@ class Member(models.Model):
     state = models.CharField(max_length=50,null=True,blank=True)
     pin = models.CharField(max_length=50,null=True,blank=True)
     address=models.TextField(null="True",blank=True)
-    paid=models.BooleanField(default=False)
     payment_id=models.CharField(max_length=70)
+    paid=models.BooleanField(default=False)
     amount=models.CharField(max_length=70)
     role_id=models.ForeignKey(Role,on_delete=models.DO_NOTHING,null=True,blank=True)
     

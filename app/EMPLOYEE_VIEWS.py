@@ -65,6 +65,8 @@ def employer_bookinglist(request):
 def add_movie(request):
     return render(request,'add_movie.html')
     
+
+    
 def employer_register(request):
     if request.method == "POST":
         username = request.POST.get('username')
@@ -86,7 +88,10 @@ def employer_register(request):
             return redirect('employer_register')
 
        
-        
+        if CustomUser.objects.filter(username=username).exists():
+                messages.warning(request, "Username is already Taken")
+                return redirect('employer_register')
+
 
         
         userr=CustomUser.objects.create_user(username=username,password=password,pan_no=emp_pan,user_type=2)
@@ -95,8 +100,8 @@ def employer_register(request):
         userr.employer.emp_city=emp_city
         userr.employer.emp_state=emp_state
         userr.employer.emp_pin_code=emp_pin
-        userr.employer.pan_no=pan_no
-        # user.employer.pan_Card=pan_no
+        userr.employer.pan_no=emp_pan
+        userr.employer.pan_Card=pan_no
         userr.employer.section=goverment
         userr.employer.address=address
 
@@ -329,6 +334,11 @@ def outer_employer_service(request):
 @login_required(login_url="login2")
 def emp_outer(request):
     payout = request.GET.get('city')
+    employer_obj=Employer.objects.get(admin=request.user.id)
+    sectn = employer_obj.section
+    
+    
+    # print("userrrrrrrrrr",user)
     
     city = City.objects.all()
     role = Role.objects.all()
@@ -343,7 +353,7 @@ def emp_outer(request):
         role2 = Role.objects.filter(city_id=cityy)
         demo3 = role2
         city_name = City.objects.get(id=city_search)
-    return render(request,"employer/outer.html",{'role':role,'city':city,'demo':demo3,'city_name':city_name})
+    return render(request,"employer/outer.html",{'role':role,'city':city,'demo':demo3,'city_name':city_name,'employer_obj':employer_obj,'sectn':sectn})
     
 
 
@@ -362,7 +372,7 @@ def do_emp_outer(request):
         salary = int(request.POST.get('salary'))
         total_monthly = int(no_of_worker * salary)
         print("totalllllllll",total_monthly)
-        goverment = request.POST.get('goverment')
+        goverment = request.POST.get('goverment2')
         department = request.POST.get('dep_name')
         
         if department == "":

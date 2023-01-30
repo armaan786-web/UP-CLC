@@ -41,7 +41,7 @@
                   <span id="pnameerror" class="text-danger font-weight-bold"></span>
                 </div>
                 <div class="col-6 col-md-6 form-group">
-                  <input class="form-control" placeholder="Pan No"  type="text" name="emp_pan" id="panNumber" required/>
+                  <input class="form-control panNo" placeholder="Pan No"  type="text" name="emp_pan" id="panNumber" />
                   <span id="panameerror" class="text-danger font-weight-bold"></span>
                 </div>
                 <div class="col-12 form-group">
@@ -54,6 +54,24 @@
                     accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
                     style="line-height:2rem !important" required/>
                 </div>
+
+                <div class="col-8 col-md-6 form-group" required>
+                  <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="inlineRadio1">Requirement for goverment department?</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="goverment" id="inlineRadio1"
+                      value="Goverment" checked>
+                    <label class="form-check-label" for="inlineRadio1">Yes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="goverment" id="inlineRadio2"
+                      value="Private" required>
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                  </div>
+                </div>
+
+                
 
                 {% comment %} <div class="col-8 col-md-6 form-group">
                   <div class="form-check form-check-inline">
@@ -80,7 +98,7 @@
                 </div>
               </div>
                 <div class="modal-footer border-top-0">
-                  <button type="submit" class="btn head-btn bg-success" id="sub" onclick="subhide()">
+                  <button type="submit" class="btn bg-success head-btn" id="sub" onclick="subhide()">
                     Register
                   </button>
                 </div>
@@ -102,10 +120,12 @@
     let panNumberValue = document.getElementById("panNumber").value;
 
 
+
+
     let nameCheck = /^[A-Za-z. ]{3,30}$/ ;
     let numberCheck = /^[6789][0-9]{9}$/ ;
     let pnumberCheck = /^[0-9]{6}$/ ;
-    let panCheck = /^[A-Z0-9]{10}$/ ;
+    let panCheck = /^[A-Za-z0-9]{10}$/ ;
 
 
     if (nameCheck.test(userNameValue)) {
@@ -149,6 +169,19 @@
       return false;
     }
   }
+
+  {% comment %} goverment code {% endcomment %}
+  let Radio1 = document.getElementById("inlineRadio1")
+  let Radio2 = document.getElementById("inlineRadio2")
+  let panNumber = document.getElementById("panNumber")
+
+  Radio1.addEventListener("click", ()=>{
+    panNumber.setAttribute('readonly', true);
+  })
+  Radio2.addEventListener("click", ()=>{
+    panNumber.removeAttribute('readonly', false);
+  })
+
 </script>
 
 {% endblock content %}

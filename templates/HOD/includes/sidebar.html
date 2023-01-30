@@ -30,19 +30,40 @@
                 <hr class="nav-separator">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_role">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_city">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
-                        <span class="nav-link-text">City</span>
+                        <span class="nav-link-text">Gallery</span>
                     </a>
-                    <ul id="auth_role" class="nav flex-column collapse collapse-level-1">
+                    <ul id="auth_city" class="nav flex-column collapse collapse-level-1">
                         <li class="nav-item">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
+                                {% comment %} <li class="nav-item">
                                     <a class="nav-link" href="{% url 'add_city' %}">
                                            Add City
                                         </a>
-                                   
+                                   </li> {% endcomment %}
+                              
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'manage_gallery' %}">Manage Gallery</a>
                                 </li>
+                                
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_city">
+                        <span class="feather-icon"><i data-feather="zap"></i></span>
+                        <span class="nav-link-text">City</span>
+                    </a>
+                    <ul id="auth_city" class="nav flex-column collapse collapse-level-1">
+                        <li class="nav-item">
+                            <ul class="nav flex-column">
+                                {% comment %} <li class="nav-item">
+                                    <a class="nav-link" href="{% url 'add_city' %}">
+                                           Add City
+                                        </a>
+                                   </li> {% endcomment %}
                               
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'manage_city' %}">Manage City</a>
@@ -61,12 +82,12 @@
                     <ul id="auth_role" class="nav flex-column collapse collapse-level-1">
                         <li class="nav-item">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
+                                {% comment %} <li class="nav-item">
                                     <a class="nav-link" href="{% url 'add_role' %}">
                                            Add Role
                                         </a>
                                    
-                                </li>
+                                </li> {% endcomment %}
                               
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'manage_role' %}">Manage Role</a>
@@ -85,12 +106,12 @@
                     <ul id="auth_training" class="nav flex-column collapse collapse-level-1">
                         <li class="nav-item">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
+                                {% comment %} <li class="nav-item">
                                     <a class="nav-link" href="{% url 'training_center' %}">
                                            Add Center
                                         </a>
                                    
-                                </li>
+                                </li> {% endcomment %}
                               
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'manage_center' %}">Manage Center</a>
@@ -101,7 +122,7 @@
                     </ul>
                 </li>
                 
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_location">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
                         <span class="nav-link-text">Location </span>
@@ -117,13 +138,13 @@
                                 </li>
                               
                                 <li class="nav-item">
-                                    <a class="nav-link" href="">Manage Location</a>
+                                    <a class="nav-link" href="#">Manage Location</a>
                                 </li>
                                 
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> {% endcomment %}
                 
 {% comment %}                
                 <li class="nav-item">
@@ -150,7 +171,7 @@
                     </ul>
                 </li> {% endcomment %}
                
-                <li class="nav-item">
+                {% comment %} <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#auth_drp">
                         <span class="feather-icon"><i data-feather="zap"></i></span>
                         <span class="nav-link-text">Employer</span>
@@ -173,7 +194,7 @@
                             </ul>
                         </li>
                     </ul>
-                </li>
+                </li> {% endcomment %}
                 
                 <li class="nav-item">
                     <a class="nav-link" href="javascript:void(0);" data-toggle="collapse" data-target="#pages_drp">
@@ -183,9 +204,9 @@
                     <ul id="pages_drp" class="nav flex-column collapse collapse-level-1">
                         <li class="nav-item">
                             <ul class="nav flex-column">
-                                <li class="nav-item">
+                                {% comment %} <li class="nav-item">
                                     <a class="nav-link" href="{% url 'add_instructor' %}">Add Instructor</a>
-                                </li>
+                                </li> {% endcomment %}
                                 <li class="nav-item">
                                     <a class="nav-link" href="{% url 'manage_instructor' %}">Manage Instructor</a>
                                 </li>

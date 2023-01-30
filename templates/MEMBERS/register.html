@@ -11,33 +11,60 @@
       
       <div class="row text ">
         <div class="col pa-0">
-          <div>
-            <form action="" method="POST">
-              {% csrf_token %}
-            <select id="select1" class="form-select form-control" name="city_search">
-              <option selected disabled="true">----City----</option>
-              {% for i in city %}
-              {% if i.active %}
-              <option value="{{i.id}}">{{i.city}}</option>
-              {% endif %}
-              {% endfor %}
-            </select>
-          </div>
-          <div>
+
+          <form action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col">
+                <select id="select1" class="form-select form-control" name="city_search">
+                  <option selected disabled="true">----City----</option>
+                  {% for i in city %}
+                  {% if i.active %}
+                  <option value="{{i.id}}">{{i.city}}</option>
+                  {% endif %}
+                  {% endfor %}
+                </select>
+
+              </div>
+              <select  class="form-select form-control my-2" id="select2" name="testing" hidden>
+                <option selected disabled="true">Role</option>
+                {% for role in role %}
+                {% if role.is_worker %}
+                <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option>
+                {% comment %} <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option> {% endcomment %}
+                {% endif %}
+                {% endfor %}
+                
+              </select>
+              
+            </div>
+            <div class="row justify-content-center mt-2">
+              <div class="col-3">
+                <button type="submit" class="bg-success w-100 border-0 p-2" value="Search" style="border-radius: .25rem">
+                  Submit
+                </button>
+              </div>
+            </div>
+            
+
+          {% comment %} <div>
             <select  class="form-select form-control my-2" id="select2" name="testing" hidden>
               <option selected disabled="true">Role</option>
               {% for role in role %}
               {% if role.is_worker %}
-              {% comment %} <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option> {% endcomment %}
+              <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option>
               <option value="{{role.city_id}}">{{role.role_name}} ({{role.min_sal}})</option>
               {% endif %}
               {% endfor %}
               
             </select>
 
-            <input type="submit" value="Search" class=" btn-success my-2">
-            </form>
-          </div>
+            <button type="submit" class="btn head-btn1 bg-success" value="Search">
+              Submit
+            </button>
+          </div> {% endcomment %}
+        </form>
+        <hr class="mb-3 mt-2">
 
           <form method="POST" action="{% url 'douserregister' %}" enctype="multipart/form-data"
             onsubmit="return validation()">
@@ -140,7 +167,7 @@
                     <span id="anameerror" class="text-danger font-weight-bold"></span>
                   </div>
                   <div class="col-6 col-md-4 form-group">
-                    <input class="form-control" placeholder="PAN No" type="text" name="pan_no" id="panNumber" required/>
+                    <input class="form-control" placeholder="PAN No" type="text" name="pan_no" id="panNumber"/>
                     <span id="panameerror" class="text-danger font-weight-bold"></span>
                   </div>
 
@@ -188,6 +215,12 @@
                       accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps"
                       style="line-height:2rem !important" required/>
                   </div>
+                  
+                  <div class="col-12 col-md-6 form-group">
+                    Upload a photo of yourself:
+                    <input type="file" name="photo"
+                    accept="image/*" style="line-height:2rem !important" required/>
+                  </div>
                   <div>
                     {% comment %} <input type="text" placeholder="Salary" class="form-control" name="salary" value="{% for  venues in venues  %}{{venues.min_sal}}{% endfor %}" placeholder="Role" readonly> {% endcomment %}
 		                {% comment %} <input type="text" id="text"> {% endcomment %}
@@ -210,7 +243,7 @@
 
                 <div class="row justify-content-end border-top">
                   <div class="modal-footer border-top-0">
-                    <button type="submit" class="btn head-btn1 bg-success">
+                    <button type="submit" class="btn head-btn bg-success">
                       Register
                     </button>
                   </div>
@@ -231,7 +264,7 @@
 <script>
   $(document).ready(function () {
     $('#datepicker').datepicker({
-      yearRange: "-100:+10",
+      yearRange: "-100:-18",
       dateFormat: "yy-mm-dd",
       changeMonth: true,
       changeYear: true
@@ -245,14 +278,12 @@
     let mobileNumberValue = document.getElementById("mobileNumber").value;
     let pinCodeValue = document.getElementById("pinCode").value;
     let aadharNumberValue = document.getElementById("txtPanNo").value;
-    let panNumberValue = document.getElementById("panNumber").value;
 
 
     let nameCheck = /^[A-Za-z. ]{3,30}$/ ;
     let numberCheck = /^[6789][0-9]{9}$/ ;
     let pnumberCheck = /^[0-9]{6}$/ ;
     let anumberCheck = /^[23456789]{1}[0-9]{11}$/ ;
-    let panCheck = /^[A-Z0-9]{10}$/ ;
 
 
     if (nameCheck.test(userNameValue)) {
@@ -301,16 +332,6 @@
     else {
       //document.getElementById("txtPanNo").style.border = "2px solid rgb(234 27 27 / 71%)";
       document.getElementById("anameerror").innerHTML = "**Aadhar No is invalid";
-      return false;
-    }
-
-    if (panCheck.test(panNumberValue)) {
-      //document.getElementById("panNumber").style.border = "2px solid green";
-      document.getElementById("panameerror").innerHTML = " ";
-    }
-    else {
-      //document.getElementById("panNumber").style.border = "2px solid rgb(234 27 27 / 71%)";
-      document.getElementById("panameerror").innerHTML = "**Pan No is invalid";
       return false;
     }
   }

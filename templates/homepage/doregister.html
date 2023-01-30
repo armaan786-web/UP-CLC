@@ -21,7 +21,7 @@
             <div class="col-sm-4 bg-info rounded-left">
               <div class="card-block text-center text-white">
                 <li class="fas fa-user-tie fa-7x mt-5"></li> 
-                <h2 class="font-weight-bold mt-4">{{username}}</h2>
+                <h2 class="font-weight-bold mt-4 text-uppercase text-break">{{username}}</h2>
                 <p>clcup</p>
                 <a href="{% url 'register' %}"><i class="far fa-edit fa-2x"></i></a> <br>
                 <p class="mb-4">Back</p>
@@ -29,39 +29,39 @@
             </div>
 
             <div class="col-sm-8 bg-white rounded-right">
-              <h3 class="mt-3 text-center">Information</h3>
+              <h3 class="mt-3 text-center">INFORMATION</h3>
               <hr class="badge-primary mt-0 w-25">
               
               
-              <div class="row">
+              <div class="row mb-4">
 
                 <div class="col-sm-4">
-                  <p class="font-weight-bold">User-Name:</p>
-                  <h6 class="text-muted">{{username}}</h6>
+                  <p class="font-weight-bold mb-1">USER-NAME:</p>
+                  <h6 class="text-muted text-uppercase text-break">{{username}}</h6>
                 </div>
 
                 <div class="col-sm-6">
-                  <p class="font-weight-bold">Father-Name:</p>
-                  <h6 class="text-muted">{{father_name}}</h6>
+                  <p class="font-weight-bold mb-1">DOB:</p>
+                  <h6 class="text-muted ">{{dob}}</h6>
                 </div>
               </div>
 
               <div class="row">
 
                 <div class="col-sm-4">
-                  <p class="font-weight-bold">Mobile-Number:</p>
+                  <p class="font-weight-bold mb-1">MOBILE-NUMBER:</p>
                   <h6 class="text-muted">{{mobile_no}}</h6>
                 </div>
 
                 <div class="col-sm-6">
-                  <p class="font-weight-bold">Adhaar:</p>
+                  <p class="font-weight-bold mb-1">AADHAR NO:</p>
                   <h6 class="text-muted">{{adhaar}}</h6>
                 </div>
               </div>
               <p class=" text-center"style="font-size:1.5rem; margin-bottom:0rem !important;">Registration Fees </p>
               <p class="text-center amount" style="font-size:2rem; margin-bottom:-1rem !important;">200/-</p>
-              <hr class="bg-primary">
-              <div class="d-flex justify-content-center pt-3">  
+              <hr class="bg-primary mb-1">
+              <div class="d-flex justify-content-center">  
                 {% if payment %}
                 <a id="rzp-button1" ><button type="submit" class="btn btn-warning btn-lg">Confirm</button></a>
                 {% endif %} 

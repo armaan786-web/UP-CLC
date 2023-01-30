@@ -3,7 +3,34 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from app.models import*
 from django.contrib import messages
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.decorators import login_required
 
+
+def login2(request):
+    return render(request, 'HOD/hod_login2.html')
+
+
+
+def dologin2(request):
+    if request.method == "POST":
+        user=authenticate(request,username=request.POST.get("username"),password=request.POST.get("password"))
+        if user!=None:
+            login(request,user)
+            if user.user_type=="1":
+                return HttpResponseRedirect(reverse("hod_dashboard"))
+                
+            else:
+                return redirect("hod_login2")
+                # return HttpResponseRedirect(reverse("hod_login2"))
+        else:
+            messages.error(request,"Invalid Username and Password")
+            return redirect("hod_login2")
+            # return HttpResponseRedirect("hod_login2")
+
+    return render(request, 'HOD/hod_login2.html')
+
+@login_required(login_url='hod_login2')
 def HOD(request):
     member_count=Member.objects.all().count()
     role_count=Role.objects.all().count()
@@ -20,7 +47,7 @@ def ADD_CITY(request):
             city = City.objects.create(city=city)
             city.save()
             messages.success(request,"Successfully Created City")
-            return HttpResponseRedirect(reverse("add_city"))
+            return HttpResponseRedirect(reverse("manage_city"))
         except:
             messages.error(request,"Failed to Create City")
             return HttpResponseRedirect(reverse("add_city"))
@@ -77,7 +104,7 @@ def ADD_ROLE(request):
             rolee = Role.objects.create(role_name=role,city=cityy,min_sal=min_salary,max_sal=max_salary,gov_approved=gov_approved,margin=margin)
             rolee.save()
             messages.success(request,"Successfully Created Role")
-            return HttpResponseRedirect(reverse("add_role"))
+            return HttpResponseRedirect(reverse("manage_role"))
         except:
             messages.error(request,"Failed to Create Role")
             return HttpResponseRedirect(reverse("add_role"))

@@ -3,19 +3,20 @@
 <div class="hk-wrapper hk-vertical-nav">
 <div class="hk-pg-wrapper ">
     <nav class="hk-breadcrumb" aria-label="breadcrumb">
-        <ol class="breadcrumb breadcrumb-light bg-transparent p-4">
-            <li class="breadcrumb-item"><a  href="#">Role</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Role</li>
+        <ol class="breadcrumb breadcrumb-light bg-transparent p-2 border-0">
+            <li class="breadcrumb-item d-none"><a  href="#">Role</a></li>
+            <li class="breadcrumb-item active d-none" aria-current="page">Add Role</li>
         </ol>
     </nav>
     <div class="container">
         <div class="row">
             <div class="col-xl-12">
-               
-              
                 
-                <section class="hk-sec-wrapper">
-                    <h5 class="hk-sec-title">ADD ROLE</h5>
+                <section class="hk-sec-wrapper rounded-20">
+                    <div class="row justify-content-between">
+                        <a href="{% url 'add_role' %}" class="ml-3"><h5 class="hk-sec-title" style="border-bottom: 3px solid #ab26aa; font-weight: 700;">ADD ROLE</h5></a>
+                        <a href="{% url 'manage_role' %}" class="btn btn-primary mr-3"><h6 class="hk-sec-title fw-bolder mb-0 text-white">MANAGE ROLL</h6></a>
+                    </div>
                     <hr>
                     {% include 'HOD/includes/messages.html' %}
                     <div class="row">
@@ -25,7 +26,7 @@
                                 <div class="form-row">
                                
                                     
-                                    <div class="col-md-4 mb-15">
+                                    <div class="col-sm-6 mb-15">
                                         <label for="validationTooltipUsername">Role Name</label>
                                         <div class="input-group">
                                             {% comment %} <div class="input-group-prepend">
@@ -37,12 +38,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <div class="form-row">
-                               
-                                    
-                                    <div class="col-md-4 mb-15">
+
+                                    <div class="col-sm-6 mb-15">
                                         <label for="validationTooltipUsername">city</label>
                                         <div class="input-group">
                                             {% comment %} <div class="input-group-prepend">
@@ -60,12 +57,12 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 
                                 <div class="form-row">
                                
-                                    
-                                    <div class="col-md-4 mb-15">
+                                    <div class="col-sm-6 mb-15">
                                         <label for="validationTooltipUsername">Minimum Salary</label>
                                         <div class="input-group">
                                             {% comment %} <div class="input-group-prepend">
@@ -78,7 +75,7 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-4 mb-15">
+                                    <div class="col-sm-6 mb-15">
                                         <label for="validationTooltipUsername">Maximum Salary</label>
                                         <div class="input-group">
                                             {% comment %} <div class="input-group-prepend">
@@ -91,7 +88,12 @@
                                         </div>
                                     </div>
                                     
-                                    <div class="col-md-4 mb-15">
+                                </div>
+
+
+                                <div class="form-row">
+
+                                    <div class="col-sm-6 mb-15">
                                         <label for="validationTooltipUsername">Goverment Approved</label>
                                         <div class="input-group">
                                             {% comment %} <div class="input-group-prepend">
@@ -103,13 +105,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-
-                                <div class="form-row">
                                
                                     
-                                    <div class="col-md-4 mb-15">
+                                    <div class="col-sm-6 mb-15">
                                         <label for="validationTooltipUsername">Margin</label>
                                         <div class="input-group">
                                             {% comment %} <div class="input-group-prepend">
@@ -121,6 +119,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 
                                 

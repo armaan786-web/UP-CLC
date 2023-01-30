@@ -57,6 +57,9 @@ def about(request):
 
 def contact(request):
      return render(request,'homepage/contact.html')
+     
+def contact(request):
+     return render(request,'homepage/contact.html')
 
 def profile(request):
      if request.method == "POST":
@@ -85,7 +88,28 @@ def profile(request):
 def apply(request):
      return render(request,'homepage/apply.html')
 
+def gallery(request):
+    galary = gallary.objects.all()
+    return render(request,'homepage/gallery.html',{'galary':galary})
 
+def manage_gallery(request):
+    galery = gallary.objects.all()
+    return render(request,'HOD/manage_gallery.html',{'galery':galery})
+
+def add_gallery(request):
+    if request.method == "POST":
+        print("hello")
+        galary = request.FILES.get('abb')
+        galary_pic = gallary.objects.create(galary_pic=galary)
+        galary_pic.save()
+        messages.success(request,"Add Gallery Successfully")
+        print(galary)
+
+    return render(request,'HOD/add_gallery.html')
+
+def show_galary(request):
+    galery = gallary.objects.all()
+    return render(request,'galary.html',{'galery':galery})
 
 def logout_user(request):
     logout(request)
@@ -100,24 +124,71 @@ def success(request):
 def worlker_list(request,id):
     # Employer_id = request.user
     # print("EEEEEEEEE",Employer_id)
-    gvt = Booking.objects.get(services=id)
-    d = gvt.goverment
+    role = Role.objects.get(id=id)
+    mem = Member.objects.filter(role_id = role).order_by('?')[:3]
+    emp_gov=Employer.objects.get(admin=request.user.id)
+    monthly = Booking.objects.get(employer_id__admin = request.user.id)
+    total = monthly.total_monthly
+    total_price = total*100
+    # print("total",total_price)
+    # print("monthly",monthly.paid)
+    # print(emp_gov.section)
+    
+    
+
+   
+        
+    
+    # d = gvt.goverment
     # e = gvt.paid
     # print("sssssssssss",d)
     booking=Employer.objects.get(admin=request.user.id)
-    book = Booking.objects.get(services_id=id)
-    abc = book.services_id
-    print("dooooo",abc)
+    book = Booking.objects.filter(services_id=id)
+    
+
+    # abc = book.services_id
+    # print("dooooo",abc)
     # role_id = Member.objects.filter(role_id_id=abc)
     # member = Member.objects.all()
     
     member = Member.objects.filter(role_id_id=id)
     
+   
+
+    # if request.method == "POST":
+        
+    #     title = request.POST.get('amt')
+    #     print("helloooooooo",title)
+        # return HttpResponse(status=204,headers={
+        #     'HX-Trigger': json.dumps({
+        #                 "movieListChanged": None,
+        #                 "showMessage": f"added."
+                        
+        #             })
+        # })
+        
+        
     
-    return render(request,'demo.html',{'member':member,'booking':booking,'d':d})    
+    
+    return render(request,'demo.html',{'member':member,'booking':booking,'mem':mem,'emp_gov':emp_gov,'monthly':monthly,'total_price':total_price})    
     # return render(request,'demo.html')    
 
 
+   
+@csrf_exempt
+def booking_Success(request):
+    if request.method=="POST":
+        a=request.POST
+        print(a)
+        order_id=""
+        for key,val in a.items():
+            if key=="razorpay_order_id":
+                order_id = val
+                break
+        user=Booking.objects.filter(payment_id=order_id).first() 
+        user.paid=True
+        user.save()
+    return render(request , 'MEMBERS/success.html')   
 def testing(request):
     event_list = Role.objects.all()
     if request.method == "POST":
